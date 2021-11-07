@@ -16,7 +16,7 @@ namespace eCommerce_backend.Controllers
     {
         public BrandController(ECommerceContext context)
         {
-            service = new Services.BrandService(context.Brands);
+            service = new Services.BrandService(context.Brands,context);
         }
     }
 }

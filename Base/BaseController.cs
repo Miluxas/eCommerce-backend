@@ -23,6 +23,24 @@ namespace eCommerce_backend.Base
             return await service.List();
         }
 
+        [HttpGet]
+        [Route("Detail")]
+        public async Task<T?> Detail(Guid? id)
+        {
+            if (id.HasValue)
+                return await service.Detail(id.Value);
+            else
+                return null;
+
+        }
+
+        [HttpPost]
+        [Route("Create")]
+        public async Task<T> Create( T detail)
+        {
+            return await service.Create(detail);
+        }
+
         // GET: [controller]/Details/5
     }
 }

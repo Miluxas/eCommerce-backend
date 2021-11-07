@@ -7,8 +7,8 @@ namespace eCommerce_backend.Services
 {
     public class BrandService:Base.BaseService<Brand>
     {
-        public BrandService(DbSet<Brand> ts):base(ts) {
-            _ts = ts;
+        public BrandService(DbSet<Brand> ts,ECommerceContext context):base(ts,context) {
+
         }
 
     }
