@@ -8,12 +8,15 @@ namespace eCommerce_backend.Base
      
     public class BaseModel
     {
-
-        public Guid ID { get; set; }
-        public string ReadableId { get; set; }
-        public bool IsActive { get; set; }
-        public Guid CountryId { get; set; }
-
         
+        public Int64 ID { get; set; }
+        public bool IsActive { get; set; }
+        public DateTime CreatedAt { get; set; }
+        public Int64 CreatedBy { get; set; }
+        public Int16 DeleteStatus { get; set; }
+
+
+    
+
     }
 }
