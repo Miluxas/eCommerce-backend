@@ -13,6 +13,8 @@ namespace eCommerce_backend.Models
     public class Brand : BaseModel
     {
         public string Ml_Name { get; set; }
+        public string MD_Image { get; set; }
+
 
 
         [NotMapped]
@@ -22,7 +24,7 @@ namespace eCommerce_backend.Models
             {
                 return JsonConvert.DeserializeObject<Dictionary<string,string>>(Ml_Name);
             }
-            set
+            set 
             {
                 Ml_Name = JsonConvert.SerializeObject(value);
             }
