@@ -13,7 +13,7 @@ namespace eCommerce_backend.Models
     public class Brand : BaseModel
     {
         public string Ml_Name { get; set; }
-        public string MD_Image { get; set; }
+        public string Md_Image { get; set; }
 
 
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,12 +10,12 @@ using Newtonsoft.Json;
 
 namespace eCommerce_backend.Models
 {
-    [Table("Attribute")]
-    public class Attribute : BaseModel
+    public class Variation : BaseModel
     {
         public string Ml_Name { get; set; }
+        public int Type { get; set; }
         [NotMapped]
-        public List<AttributeItem> Items
+        public List<VariationItem> Items
         {
             get; set;
         }
@@ -33,16 +32,12 @@ namespace eCommerce_backend.Models
             }
         }
     }
-
-    [Table("AttributeItem")]
-    public class AttributeItem
+    public class VariationItem
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Required]
         public Int64 ID { get; set; }
-        public Int64 AttributeID { get; set; }
+        public Int64 VariationID { get; set; }
         public string Ml_Name { get; set; }
+        public string Value { get; set; }
         [NotMapped]
         public Dictionary<string, string> Name
         {
@@ -55,5 +50,6 @@ namespace eCommerce_backend.Models
                 Ml_Name = JsonConvert.SerializeObject(value);
             }
         }
+
     }
 }

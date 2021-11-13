@@ -14,7 +14,7 @@ namespace eCommerce_backend.Base
     [ApiController]
     public class BaseController<T> : ControllerBase where T : BaseModel 
     {
-        protected IBaseService<T> service;
+        protected BaseService<T> service;
 
         // GET: [controller]
         [HttpGet]

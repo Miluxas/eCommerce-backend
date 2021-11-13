@@ -10,11 +10,12 @@ using Newtonsoft.Json;
 
 namespace eCommerce_backend.Models
 {
+    [Table("Category")]
     public class Category : BaseModel
     {
         public string Ml_Name { get; set; }
-        public string MM_Image { get; set; }
-        public Int64 ParentID { get; set; }
+        public string Mm_Image { get; set; }
+        public Int64? ParentID { get; set; }
 
 
 
@@ -32,15 +33,21 @@ namespace eCommerce_backend.Models
         }
 
         [NotMapped]
-        public Dictionary<string, string> Image
+        public Dictionary<string, string>? Image
         {
             get
             {
-                return JsonConvert.DeserializeObject<Dictionary<string, string>>(MM_Image);
+                if (Mm_Image!=null)
+                    return JsonConvert.DeserializeObject<Dictionary<string, string>>(Mm_Image);
+                return null;
+
             }
             set
             {
-                MM_Image = JsonConvert.SerializeObject(value);
+                if (value != null)
+                    Mm_Image = JsonConvert.SerializeObject(value);
+                else
+                    Mm_Image = "";
             }
         }
     }

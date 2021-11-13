@@ -31,7 +31,7 @@ namespace eCommerce_backend
                     var context = services.GetRequiredService<ECommerceContext>();
                     DbInitializer.Initialize(context);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw;
                 }

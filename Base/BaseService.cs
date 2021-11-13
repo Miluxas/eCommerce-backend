@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace eCommerce_backend.Base
 {
-    public class BaseService<T> :IBaseService<T> where T : BaseModel
+    public class BaseService<T> where T : BaseModel
     {
         protected DbSet<T> _ts;
         protected Data.ECommerceContext _context;
@@ -23,7 +23,7 @@ namespace eCommerce_backend.Base
         {
             return await _ts.ToListAsync();
         }
-        public async Task<T> Detail(Int64 id)
+        virtual public async Task<T> Detail(Int64 id)
         {
             return await _ts.AsNoTracking<T>().FirstAsync<T>(e => e.ID == id);
         }
