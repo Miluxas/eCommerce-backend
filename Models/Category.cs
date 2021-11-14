@@ -33,12 +33,12 @@ namespace eCommerce_backend.Models
         }
 
         [NotMapped]
-        public Dictionary<string, string>? Image
+        public Dictionary<string, Media>? Image
         {
             get
             {
                 if (Mm_Image!=null)
-                    return JsonConvert.DeserializeObject<Dictionary<string, string>>(Mm_Image);
+                    return JsonConvert.DeserializeObject<Dictionary<string, Media>>(Mm_Image);
                 return null;
 
             }

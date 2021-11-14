@@ -15,8 +15,25 @@ namespace eCommerce_backend.Models
         public string Ml_Name { get; set; }
         public string Md_Image { get; set; }
 
+        [NotMapped]
 
+        public Media? Image
+        {
+            get
+            {
+                if (Md_Image != null)
+                    return JsonConvert.DeserializeObject<Media>(Md_Image);
+                return null;
 
+            }
+            set
+            {
+                if (value != null)
+                    Md_Image = JsonConvert.SerializeObject(value);
+                else
+                    Md_Image = "";
+            }
+        }
         [NotMapped]
         public Dictionary<string, string> Name
         {
