@@ -14,48 +14,15 @@ namespace eCommerce_backend.Models
     {
         public string Ml_Name { get; set; }
         public int Type { get; set; }
-        [NotMapped]
-        public List<Sku> Skus
-        {
-            get; set;
-        }
-        [NotMapped]
-        public Dictionary<string, string> Name
-        {
-            get
-            {
-                return JsonConvert.DeserializeObject<Dictionary<string, string>>(Ml_Name);
-            }
-            set
-            {
-                Ml_Name = JsonConvert.SerializeObject(value);
-            }
-        }
-    }
-    public class Sku
-    {
-        public Int64 ID { get; set; }
-        public Int64 ProductID { get; set; }
-        public string Ml_Name { get; set; }
-        public string Value { get; set; }
-        public string Md_Images { get; set; }
-        public List<Media>? Images
-        {
-            get
-            {
-                if (Md_Images != null)
-                    return JsonConvert.DeserializeObject<List<Media>>(Md_Images);
-                return null;
-
-            }
-            set
-            {
-                if (value != null)
-                    Md_Images = JsonConvert.SerializeObject(value);
-                else
-                    Md_Images = "";
-            }
-        }
+        public bool HasWrapping { get; set; }
+        public bool HasGiftCard { get; set; }
+        public bool HasCustomText { get; set; }
+        public string Ml_Description { get; set; }
+        public bool Taxable { get; set; }
+        public Int64 SizeGuildID { get; set; }
+        public bool IsStandardProduct { get; set; }
+        public Int64 ApprovedBy { get; set; }
+        public string Code { get; set; }
 
         [NotMapped]
         public Dictionary<string, string> Name
@@ -69,6 +36,17 @@ namespace eCommerce_backend.Models
                 Ml_Name = JsonConvert.SerializeObject(value);
             }
         }
-
+        [NotMapped]
+        public List<Sku> Skus { get; set; }
+        [NotMapped]
+        public List<AttributeItem> AttributeItems { get; set; }
+        [NotMapped]
+        public List<Tag> Tags { get; set; }
+        [NotMapped]
+        public List<Badge> Badges { get; set; }
+        [NotMapped]
+        public List<Store> Stores { get; set; }
+        [NotMapped]
+        public List<Supplier> Suppliers { get; set; }
     }
 }
