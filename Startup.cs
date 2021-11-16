@@ -20,7 +20,6 @@ namespace eCommerce_backend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<Data.ECommerceContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
-
             services.AddControllers();
         }
 

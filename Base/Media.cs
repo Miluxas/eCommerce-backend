@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using Microsoft.EntityFrameworkCore;
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace eCommerce_backend.Base
 {
+    
     public class Media
     {
         public Media()

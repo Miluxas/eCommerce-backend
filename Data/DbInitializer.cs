@@ -11,15 +11,7 @@ namespace eCommerce_backend.Data
         {
             context.Database.EnsureCreated();
 
-            try
-            {
-                context.Brands.Count<Models.Brand>();
-
-            }
-            catch (Exception)
-            {
-
-            }
+           
         }
     }
 }

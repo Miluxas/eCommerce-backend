@@ -58,6 +58,7 @@ namespace eCommerce_backend.Data
             modelBuilder.Entity<Sku>().ToTable("Sku");
             modelBuilder.Entity<SkuVariationItem>().ToTable("SkuVariationItem");
             modelBuilder.Entity<StatusHistory>().ToTable("StatusHistory");
+            modelBuilder.Ignore<Media>();
 
         }
     }
