@@ -11,14 +11,14 @@ using Newtonsoft.Json;
 
 namespace eCommerce_backend.Models
 {
-    public class Country : BaseModel
+    public class Area : BaseModel
     {
         [Required]
         public string Ml_Name { get; set; }
-        public IList<ProductCountry> ProductCountries { get; set; }
-        public IList<ProductStore> ProductStores { get; set; }
-        public IList<ProductSupplier> ProductSuppliers { get; set; }
-        public IList<Area> Areas { get; set; }
+        public Int64 ParentAreaID { get; set; }
+        public Area ParentArea { get; set; }
+        public Int64 CountryID { get; set; }
+        public Country Country  { get; set; }
 
 
         [NotMapped]

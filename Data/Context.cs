@@ -8,13 +8,14 @@ using eCommerce_backend.Base;
 
 namespace eCommerce_backend.Data
 {
-    public class ECommerceContext:DbContext
+    public class ECommerceContext : DbContext
     {
-        public ECommerceContext(DbContextOptions<ECommerceContext> options):base(options)
+        public ECommerceContext(DbContextOptions<ECommerceContext> options) : base(options)
         { }
         public DbSet<Badge> Badges { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Country> Countries { get; set; }
         public DbSet<Models.Attribute> Attributes { get; set; }
         public DbSet<AttributeItem> AttributeItems { get; set; }
         public DbSet<Store> Stores { get; set; }
@@ -41,6 +42,7 @@ namespace eCommerce_backend.Data
             modelBuilder.Entity<Brand>().ToTable("Brand");
             modelBuilder.Entity<Badge>().ToTable("Badge");
             modelBuilder.Entity<Category>().ToTable("Category");
+            modelBuilder.Entity<Country>().ToTable("Country");
             modelBuilder.Entity<Models.Attribute>().ToTable("Attribute");
             modelBuilder.Entity<AttributeItem>().ToTable("AttributeItem");
             modelBuilder.Entity<Variation>().ToTable("Variation");
@@ -101,7 +103,7 @@ namespace eCommerce_backend.Data
                 .HasForeignKey(pB => pB.ProductID);
 
 
-            modelBuilder.Entity<ProductStore>().HasKey(pB => new { pB.ProductID, pB.CountryID,pB.StoreID });
+            modelBuilder.Entity<ProductStore>().HasKey(pB => new { pB.ProductID, pB.CountryID, pB.StoreID });
             modelBuilder.Entity<ProductStore>()
                 .HasOne(pB => pB.Product)
                 .WithMany(p => p.ProductStores)
@@ -141,6 +143,15 @@ namespace eCommerce_backend.Data
                 .HasOne(pB => pB.VariationItem)
                 .WithMany(p => p.SkuVariationItems)
                 .HasForeignKey(pB => pB.SkuID);
+
+            modelBuilder.Entity<Area>()
+           .HasOne(a => a.Country)
+           .WithMany(c => c.Areas)
+           .HasForeignKey(a => a.CountryID);
+
+            modelBuilder.Entity<PurchaseItem>().HasKey(pB => new { pB.SkuID, pB.PurchaseID });
+            modelBuilder.Entity<PurchaseReceiveItem>().HasKey(pB => new { pB.SkuID, pB.PurchaseReceiveID });
+
         }
     }
 }
