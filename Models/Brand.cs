@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,7 +13,9 @@ namespace eCommerce_backend.Models
 {
     public class Brand : BaseModel
     {
+        [Required]
         public string Ml_Name { get; set; }
+        [Required]
         public string Md_Image { get; set; }
 
         [NotMapped]

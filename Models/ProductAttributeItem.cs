@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,8 +13,9 @@ namespace eCommerce_backend.Models
 {
     public class ProductAttributeItem
     {
-        public Int64 ID { get; set; }
         public Int64 ProductID { get; set; }
+        public Product Product { get; set; }
         public Int64 AttributeItemID { get; set; }
+        public AttributeItem AttributeItem { get; set; }
     }
 }

@@ -21,16 +21,13 @@ namespace eCommerce_backend.Base
         public bool IsActive { get; set; }
 
         [Required]
+        [DataType(DataType.DateTime)]
         public DateTime CreatedAt { get; set; }
         
         [Required]
-        public Int64 CreatedBy { get; set; }
+        public Int64 CreatedByID { get; set; }
         
         [Required]
         public Int16 DeleteStatus { get; set; }
-
-
-    
-
     }
 }

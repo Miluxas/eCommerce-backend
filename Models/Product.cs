@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,17 +13,27 @@ namespace eCommerce_backend.Models
 {
     public class Product : BaseModel
     {
+        [Required]
         public string Ml_Name { get; set; }
+        [Required]
         public int Type { get; set; }
+        [Required]
         public bool HasWrapping { get; set; }
+        [Required]
         public bool HasGiftCard { get; set; }
+        [Required]
         public bool HasCustomText { get; set; }
         public string Ml_Description { get; set; }
+        [Required]
         public bool Taxable { get; set; }
         public Int64 SizeGuildID { get; set; }
+        [Required]
         public bool IsStandardProduct { get; set; }
         public Int64 ApprovedBy { get; set; }
         public string Code { get; set; }
+        public Int64 BrandID { get; set; }
+        public Brand Brand { get; set; }
+
 
         [NotMapped]
         public Dictionary<string, string> Name
@@ -36,17 +47,16 @@ namespace eCommerce_backend.Models
                 Ml_Name = JsonConvert.SerializeObject(value);
             }
         }
-        [NotMapped]
-        public List<Sku> Skus { get; set; }
-        [NotMapped]
-        public List<AttributeItem> AttributeItems { get; set; }
-        [NotMapped]
-        public List<Tag> Tags { get; set; }
-        [NotMapped]
-        public List<Badge> Badges { get; set; }
-        [NotMapped]
-        public List<Store> Stores { get; set; }
-        [NotMapped]
-        public List<Supplier> Suppliers { get; set; }
+        [InverseProperty("Product")]
+        public ICollection<Sku> Skus { get; set; }
+        public IList<ProductAttributeItem> ProductAttributeItems { get; set; }
+        public IList<ProductBadge> ProductBadges { get; set; }
+        public IList<ProductCategory> ProductCategories { get; set; }
+        public IList<ProductCountry> ProductCountries { get; set; }
+        public IList<ProductStore> ProductStores { get; set; }
+        public IList<ProductSupplier> ProductSuppliers { get; set; }
+        public IList<ProductTag> ProductTags { get; set; }
+
+
     }
 }

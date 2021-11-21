@@ -60,6 +60,87 @@ namespace eCommerce_backend.Data
             modelBuilder.Entity<StatusHistory>().ToTable("StatusHistory");
             modelBuilder.Ignore<Media>();
 
+            modelBuilder.Entity<ProductAttributeItem>().HasKey(pAi => new { pAi.ProductID, pAi.AttributeItemID });
+            modelBuilder.Entity<ProductAttributeItem>()
+                .HasOne(pAi => pAi.Product)
+                .WithMany(p => p.ProductAttributeItems)
+                .HasForeignKey(pAi => pAi.AttributeItemID);
+            modelBuilder.Entity<ProductAttributeItem>()
+                .HasOne(pAi => pAi.AttributeItem)
+                .WithMany(p => p.ProductAttributeItems)
+                .HasForeignKey(pAi => pAi.ProductID);
+
+            modelBuilder.Entity<ProductBadge>().HasKey(pB => new { pB.ProductID, pB.BadgeID });
+            modelBuilder.Entity<ProductBadge>()
+                .HasOne(pB => pB.Product)
+                .WithMany(p => p.ProductBadges)
+                .HasForeignKey(pB => pB.BadgeID);
+            modelBuilder.Entity<ProductBadge>()
+                .HasOne(pB => pB.Badge)
+                .WithMany(p => p.ProductBadges)
+                .HasForeignKey(pB => pB.ProductID);
+
+            modelBuilder.Entity<ProductCategory>().HasKey(pB => new { pB.ProductID, pB.CategoryID });
+            modelBuilder.Entity<ProductCategory>()
+                .HasOne(pB => pB.Product)
+                .WithMany(p => p.ProductCategories)
+                .HasForeignKey(pB => pB.CategoryID);
+            modelBuilder.Entity<ProductCategory>()
+                .HasOne(pB => pB.Category)
+                .WithMany(p => p.ProductCategories)
+                .HasForeignKey(pB => pB.ProductID);
+
+            modelBuilder.Entity<ProductCountry>().HasKey(pB => new { pB.ProductID, pB.CountryID });
+            modelBuilder.Entity<ProductCountry>()
+                .HasOne(pB => pB.Product)
+                .WithMany(p => p.ProductCountries)
+                .HasForeignKey(pB => pB.CountryID);
+            modelBuilder.Entity<ProductCountry>()
+                .HasOne(pB => pB.Country)
+                .WithMany(p => p.ProductCountries)
+                .HasForeignKey(pB => pB.ProductID);
+
+
+            modelBuilder.Entity<ProductStore>().HasKey(pB => new { pB.ProductID, pB.CountryID,pB.StoreID });
+            modelBuilder.Entity<ProductStore>()
+                .HasOne(pB => pB.Product)
+                .WithMany(p => p.ProductStores)
+                .HasForeignKey(pB => pB.StoreID);
+            modelBuilder.Entity<ProductStore>()
+                .HasOne(pB => pB.Store)
+                .WithMany(p => p.ProductStores)
+                .HasForeignKey(pB => pB.ProductID);
+
+
+            modelBuilder.Entity<ProductSupplier>().HasKey(pB => new { pB.ProductID, pB.CountryID, pB.SupplierID });
+            modelBuilder.Entity<ProductSupplier>()
+                .HasOne(pB => pB.Product)
+                .WithMany(p => p.ProductSuppliers)
+                .HasForeignKey(pB => pB.SupplierID);
+            modelBuilder.Entity<ProductSupplier>()
+                .HasOne(pB => pB.Supplier)
+                .WithMany(p => p.ProductSuppliers)
+                .HasForeignKey(pB => pB.ProductID);
+
+            modelBuilder.Entity<ProductTag>().HasKey(pB => new { pB.ProductID, pB.TagID });
+            modelBuilder.Entity<ProductTag>()
+                .HasOne(pB => pB.Product)
+                .WithMany(p => p.ProductTags)
+                .HasForeignKey(pB => pB.TagID);
+            modelBuilder.Entity<ProductTag>()
+                .HasOne(pB => pB.Tag)
+                .WithMany(p => p.ProductTags)
+                .HasForeignKey(pB => pB.ProductID);
+
+            modelBuilder.Entity<SkuVariationItem>().HasKey(pB => new { pB.SkuID, pB.VariationItemID });
+            modelBuilder.Entity<SkuVariationItem>()
+                .HasOne(pB => pB.Sku)
+                .WithMany(p => p.SkuVariationItems)
+                .HasForeignKey(pB => pB.VariationItemID);
+            modelBuilder.Entity<SkuVariationItem>()
+                .HasOne(pB => pB.VariationItem)
+                .WithMany(p => p.SkuVariationItems)
+                .HasForeignKey(pB => pB.SkuID);
         }
     }
 }

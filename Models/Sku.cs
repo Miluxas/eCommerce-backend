@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,11 +13,22 @@ namespace eCommerce_backend.Models
 {
     public class Sku
     {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Required]
         public Int64 ID { get; set; }
+
+        [Required]
+        [ForeignKey("Product")]
         public Int64 ProductID { get; set; }
+        public Product Product { get; set; }
+        [Required]
         public string Ml_Name { get; set; }
         public string Value { get; set; }
         public string Md_Images { get; set; }
+        public IList<SkuVariationItem> SkuVariationItems { get; set; }
+        [NotMapped]
+
         public List<Media>? Images
         {
             get
@@ -47,8 +59,6 @@ namespace eCommerce_backend.Models
                 Ml_Name = JsonConvert.SerializeObject(value);
             }
         }
-        [NotMapped]
-        public List<VariationItem> VariationItems { get; set; }
 
     }
 }

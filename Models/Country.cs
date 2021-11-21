@@ -11,12 +11,14 @@ using Newtonsoft.Json;
 
 namespace eCommerce_backend.Models
 {
-    public class Badge : BaseModel
+    public class Country : BaseModel
     {
-
         [Required]
         public string Ml_Name { get; set; }
-        public IList<ProductBadge> ProductBadges { get; set; }
+        public IList<ProductCountry> ProductCountries { get; set; }
+        public IList<ProductStore> ProductStores { get; set; }
+        public IList<ProductSupplier> ProductSuppliers { get; set; }
+
 
         [NotMapped]
         public Dictionary<string, string> Name

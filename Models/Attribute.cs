@@ -14,12 +14,10 @@ namespace eCommerce_backend.Models
     [Table("Attribute")]
     public class Attribute : BaseModel
     {
+        [Required]
         public string Ml_Name { get; set; }
-        [NotMapped]
-        public List<AttributeItem> Items
-        {
-            get; set;
-        }
+        [InverseProperty("Attribute")]
+        public ICollection<AttributeItem> Items { get; set; }
         [NotMapped]
         public Dictionary<string, string> Name
         {
@@ -41,8 +39,13 @@ namespace eCommerce_backend.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
         public Int64 ID { get; set; }
+        [Required]
+        [ForeignKey("Attribute")]
         public Int64 AttributeID { get; set; }
+        public Attribute Attribute { get; set; }
         public string Ml_Name { get; set; }
+        public IList<ProductAttributeItem> ProductAttributeItems { get; set; }
+
         [NotMapped]
         public Dictionary<string, string> Name
         {

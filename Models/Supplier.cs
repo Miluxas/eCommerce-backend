@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,8 +13,10 @@ namespace eCommerce_backend.Models
 {
     public class Supplier : BaseModel
     {
+        [Required]
         public string Ml_Name { get; set; }
         public string Md_Image { get; set; }
+        public IList<ProductSupplier> ProductSuppliers { get; set; }
 
         [NotMapped]
 

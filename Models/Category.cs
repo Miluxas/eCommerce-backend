@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,10 +14,15 @@ namespace eCommerce_backend.Models
     [Table("Category")]
     public class Category : BaseModel
     {
+        [Required]
         public string Ml_Name { get; set; }
+        [Required]
         public string Mm_Image { get; set; }
+        [ForeignKey("Parent")]
         public Int64? ParentID { get; set; }
+        public Category Parent { get; set; }
 
+        public IList<ProductCategory> ProductCategories { get; set; }
 
 
         [NotMapped]
