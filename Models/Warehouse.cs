@@ -15,9 +15,7 @@ namespace eCommerce_backend.Models
     {
         [Required]
         public string Ml_Name { get; set; }
-        public IList<ProductCountry> ProductCountries { get; set; }
-        public IList<ProductStore> ProductStores { get; set; }
-        public IList<ProductSupplier> ProductSuppliers { get; set; }
+        public IList<WarehouseArea> WarehouseAreas { get; set; }
 
 
         [NotMapped]

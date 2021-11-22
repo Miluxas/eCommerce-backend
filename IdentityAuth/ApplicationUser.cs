@@ -9,4 +9,10 @@ namespace eCommerce_backend.IdentityAuth
     public class ApplicationUser : IdentityUser
     {
     }
+    public class UserRoles
+    {
+        static public string Admin = "Admin";
+        static public string User = "User";
+
+    }
 }

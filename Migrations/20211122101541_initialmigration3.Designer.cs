@@ -10,7 +10,7 @@ using eCommerce_backend.Data;
 namespace eCommercebackend.Migrations.ECommerce
 {
     [DbContext(typeof(ECommerceContext))]
-    [Migration("20211121144119_initialmigration3")]
+    [Migration("20211122101541_initialmigration3")]
     partial class initialmigration3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -400,14 +400,9 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Property<long>("CountryID")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("WarehouseID")
-                        .HasColumnType("bigint");
-
                     b.HasKey("ProductID", "CountryID");
 
                     b.HasIndex("CountryID");
-
-                    b.HasIndex("WarehouseID");
 
                     b.ToTable("ProductCountry");
                 });
@@ -423,16 +418,11 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Property<long>("StoreID")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("WarehouseID")
-                        .HasColumnType("bigint");
-
                     b.HasKey("ProductID", "CountryID", "StoreID");
 
                     b.HasIndex("CountryID");
 
                     b.HasIndex("StoreID");
-
-                    b.HasIndex("WarehouseID");
 
                     b.ToTable("ProductStore");
                 });
@@ -448,16 +438,11 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Property<long>("SupplierID")
                         .HasColumnType("bigint");
 
-                    b.Property<long?>("WarehouseID")
-                        .HasColumnType("bigint");
-
                     b.HasKey("ProductID", "CountryID", "SupplierID");
 
                     b.HasIndex("CountryID");
 
                     b.HasIndex("SupplierID");
-
-                    b.HasIndex("WarehouseID");
 
                     b.ToTable("ProductSupplier");
                 });
@@ -857,6 +842,30 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.ToTable("Warehouse");
                 });
 
+            modelBuilder.Entity("eCommerce_backend.Models.WarehouseArea", b =>
+                {
+                    b.Property<long>("WarehouseID")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("AreaID")
+                        .HasColumnType("bigint");
+
+                    b.Property<decimal>("DeliveryCost")
+                        .HasColumnType("decimal(18,3)");
+
+                    b.Property<int>("DeliveryMaxDay")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.HasKey("WarehouseID", "AreaID");
+
+                    b.HasIndex("AreaID");
+
+                    b.ToTable("WarehouseArea");
+                });
+
             modelBuilder.Entity("eCommerce_backend.Models.Area", b =>
                 {
                     b.HasOne("eCommerce_backend.Models.Country", "Country")
@@ -978,10 +987,6 @@ namespace eCommercebackend.Migrations.ECommerce
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.Models.Warehouse", null)
-                        .WithMany("ProductCountries")
-                        .HasForeignKey("WarehouseID");
-
                     b.Navigation("Country");
 
                     b.Navigation("Product");
@@ -1006,10 +1011,6 @@ namespace eCommercebackend.Migrations.ECommerce
                         .HasForeignKey("StoreID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("eCommerce_backend.Models.Warehouse", null)
-                        .WithMany("ProductStores")
-                        .HasForeignKey("WarehouseID");
 
                     b.Navigation("Country");
 
@@ -1037,10 +1038,6 @@ namespace eCommercebackend.Migrations.ECommerce
                         .HasForeignKey("SupplierID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("eCommerce_backend.Models.Warehouse", null)
-                        .WithMany("ProductSuppliers")
-                        .HasForeignKey("WarehouseID");
 
                     b.Navigation("Country");
 
@@ -1187,6 +1184,30 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("Variation");
                 });
 
+            modelBuilder.Entity("eCommerce_backend.Models.WarehouseArea", b =>
+                {
+                    b.HasOne("eCommerce_backend.Models.Warehouse", "Warehouse")
+                        .WithMany("WarehouseAreas")
+                        .HasForeignKey("AreaID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eCommerce_backend.Models.Area", "Area")
+                        .WithMany("WarehouseAreas")
+                        .HasForeignKey("WarehouseID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Area");
+
+                    b.Navigation("Warehouse");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Models.Area", b =>
+                {
+                    b.Navigation("WarehouseAreas");
+                });
+
             modelBuilder.Entity("eCommerce_backend.Models.Attribute", b =>
                 {
                     b.Navigation("Items");
@@ -1281,11 +1302,7 @@ namespace eCommercebackend.Migrations.ECommerce
 
             modelBuilder.Entity("eCommerce_backend.Models.Warehouse", b =>
                 {
-                    b.Navigation("ProductCountries");
-
-                    b.Navigation("ProductStores");
-
-                    b.Navigation("ProductSuppliers");
+                    b.Navigation("WarehouseAreas");
                 });
 #pragma warning restore 612, 618
         }

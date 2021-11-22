@@ -61,6 +61,7 @@ namespace eCommerce_backend.Data
             modelBuilder.Entity<SkuVariationItem>().ToTable("SkuVariationItem");
             modelBuilder.Entity<StatusHistory>().ToTable("StatusHistory");
             modelBuilder.Ignore<Media>();
+            modelBuilder.Ignore<ExtraDetail>();
 
             modelBuilder.Entity<ProductAttributeItem>().HasKey(pAi => new { pAi.ProductID, pAi.AttributeItemID });
             modelBuilder.Entity<ProductAttributeItem>()
@@ -151,6 +152,16 @@ namespace eCommerce_backend.Data
 
             modelBuilder.Entity<PurchaseItem>().HasKey(pB => new { pB.SkuID, pB.PurchaseID });
             modelBuilder.Entity<PurchaseReceiveItem>().HasKey(pB => new { pB.SkuID, pB.PurchaseReceiveID });
+
+            modelBuilder.Entity<WarehouseArea>().HasKey(pB => new { pB.WarehouseID, pB.AreaID });
+            modelBuilder.Entity<WarehouseArea>()
+                .HasOne(pB => pB.Warehouse)
+                .WithMany(p => p.WarehouseAreas)
+                .HasForeignKey(pB => pB.AreaID);
+            modelBuilder.Entity<WarehouseArea>()
+                .HasOne(pB => pB.Area)
+                .WithMany(p => p.WarehouseAreas)
+                .HasForeignKey(pB => pB.WarehouseID);
 
         }
     }

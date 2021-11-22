@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using eCommerce_backend.Data;
 using eCommerce_backend.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace eCommerce_backend.Controllers
 {
+    [Authorize]
     [Route("[controller]")]
     [ApiController]
     public class BrandController : Base.BaseController<Brand>

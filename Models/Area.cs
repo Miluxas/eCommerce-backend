@@ -19,6 +19,7 @@ namespace eCommerce_backend.Models
         public Area ParentArea { get; set; }
         public Int64 CountryID { get; set; }
         public Country Country  { get; set; }
+        public IList<WarehouseArea> WarehouseAreas { get; set; }
 
 
         [NotMapped]
