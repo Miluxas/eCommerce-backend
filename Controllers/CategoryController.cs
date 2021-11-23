@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using eCommerce_backend.Data;
 using eCommerce_backend.Models;
+using Microsoft.AspNetCore.Identity;
+using eCommerce_backend.IdentityAuth;
 
 namespace eCommerce_backend.Controllers
 {
@@ -14,7 +16,7 @@ namespace eCommerce_backend.Controllers
     [ApiController]
     public class CategoryController : Base.BaseController<Category>
     {
-        public CategoryController(ECommerceContext context)
+        public CategoryController(ECommerceContext context, UserManager<ApplicationUser> userManager) : base(userManager)
         {
             service = new Services.CategoryService(context.Categories,context);
         }

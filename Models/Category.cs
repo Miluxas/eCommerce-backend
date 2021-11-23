@@ -19,7 +19,7 @@ namespace eCommerce_backend.Models
         [Required]
         public string Mm_Image { get; set; }
         [ForeignKey("Parent")]
-        public Int64? ParentID { get; set; }
+        public Guid? ParentID { get; set; }
         public Category Parent { get; set; }
 
         public IList<ProductCategory> ProductCategories { get; set; }

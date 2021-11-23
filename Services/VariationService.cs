@@ -13,7 +13,7 @@ namespace eCommerce_backend.Services
         {
         }
 
-        override public async Task<Variation> Detail(Int64 id)
+        override public async Task<Variation> Detail(Guid id)
         {
             var query = _context.Variations.Join(
                     _context.VariationItems,

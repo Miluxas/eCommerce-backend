@@ -37,11 +37,11 @@ namespace eCommerce_backend.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
-        public Int64 ID { get; set; }
+        public Guid ID { get; set; }
 
         [Required]
         [ForeignKey("Variation")]
-        public Int64 VariationID { get; set; }
+        public Guid VariationID { get; set; }
         public Variation Variation { get; set; }
         [Required]
         public string Ml_Name { get; set; }

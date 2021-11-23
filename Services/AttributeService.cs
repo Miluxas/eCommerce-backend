@@ -14,7 +14,7 @@ namespace eCommerce_backend.Services
 
         }
 
-        override public async Task<Models.Attribute> Detail(Int64 id)
+        override public async Task<Models.Attribute> Detail(Guid id)
         {
             var query = _context.Attributes.Join(
         _context.AttributeItems,

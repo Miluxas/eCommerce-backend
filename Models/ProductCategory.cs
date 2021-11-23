@@ -13,9 +13,9 @@ namespace eCommerce_backend.Models
 {
     public class ProductCategory
     {
-        public Int64 ProductID { get; set; }
+        public Guid ProductID { get; set; }
         public Product Product { get; set; }
-        public Int64 CategoryID { get; set; }
+        public Guid CategoryID { get; set; }
         public Category Category { get; set; }
     }
 }

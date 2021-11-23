@@ -13,11 +13,11 @@ namespace eCommerce_backend.Models
 {
     public class ProductStore
     {
-        public Int64 ProductID { get; set; }
+        public Guid ProductID { get; set; }
         public Product Product { get; set; }
-        public Int64 StoreID { get; set; }
+        public Guid StoreID { get; set; }
         public Store Store { get; set; }
-        public Int64 CountryID { get; set; }
+        public Guid CountryID { get; set; }
         public Country Country { get; set; }
     }
 }

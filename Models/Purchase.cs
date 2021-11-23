@@ -18,17 +18,17 @@ namespace eCommerce_backend.Models
         [Required]
         public int Type { get; set; }
         [Required]
-        public Int64 SupplierID { get; set; }
+        public Guid SupplierID { get; set; }
         public Supplier Supplier { get; set; }
         [Required]
-        public Int64 WaerhouseID { get; set; }
+        public Guid WarehouseID { get; set; }
         public Warehouse Warehouse { get; set; }
         [Required]
         public string Status { get; set; }
         [Required]
         public string InvoiceType { get; set; }
 
-        public Int64 ApprovedByID { get; set; }
+        public Guid ApprovedByID { get; set; }
         public IdentityAuth.ApplicationUser ApprovedBy { get; set; }
         public DateTime ApprovedAt { get; set; }
         [Required]
@@ -44,9 +44,9 @@ namespace eCommerce_backend.Models
     }
     public class PurchaseItem
     {
-        public Int64 PurchaseID { get; set; }
+        public Guid PurchaseID { get; set; }
         public Purchase Purchase { get; set; }
-        public Int64 SkuID { get; set; }
+        public Guid SkuID { get; set; }
         public Sku Sku { get; set; }
         public int Qty { get; set; }
     }
@@ -55,10 +55,10 @@ namespace eCommerce_backend.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
-        public Int64 ID { get; set; }
-        public Int64 PurchaseID { get; set; }
+        public Guid ID { get; set; }
+        public Guid PurchaseID { get; set; }
         public Purchase Purchase { get; set; }
-        public Int64 ReciveByID { get; set; }
+        public Guid ReciveByID { get; set; }
         public IdentityAuth.ApplicationUser ReceiveBy { get; set; }
         public DateTime ReceiveAt { get; set; }
         [InverseProperty("PurchaseReceive")]
@@ -66,9 +66,9 @@ namespace eCommerce_backend.Models
     }
     public class PurchaseReceiveItem
     {
-        public Int64 PurchaseReceiveID { get; set; }
+        public Guid PurchaseReceiveID { get; set; }
         public PurchaseReceive PurchaseReceive { get; set; }
-        public Int64 SkuID { get; set; }
+        public Guid SkuID { get; set; }
         public Sku Sku { get; set; }
         public int Qty { get; set; }
     }

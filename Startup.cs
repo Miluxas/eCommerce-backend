@@ -29,8 +29,8 @@ namespace eCommerce_backend
             services.AddDbContext<ECommerceContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
             services.AddControllers();
             // For Identity
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-            .AddEntityFrameworkStores<ECommerceContext>()
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+            .AddEntityFrameworkStores<IdentityContext>()
             .AddDefaultTokenProviders();
             // Adding Authentication
             services.AddAuthentication(options =>
@@ -65,6 +65,7 @@ namespace eCommerce_backend
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {

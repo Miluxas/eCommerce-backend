@@ -21,8 +21,9 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.IdentityAuth.ApplicationUser", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
@@ -68,24 +69,23 @@ namespace eCommercebackend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ApplicationUser");
+                    b.ToTable("AspNetUsers");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Area", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("CountryID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CountryID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedByID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CreatedByID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
                         .HasColumnType("smallint");
@@ -97,30 +97,24 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("ParentAreaID")
-                        .HasColumnType("bigint");
-
                     b.HasKey("ID");
 
                     b.HasIndex("CountryID");
-
-                    b.HasIndex("ParentAreaID");
 
                     b.ToTable("Area");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Attribute", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedByID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CreatedByID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
                         .HasColumnType("smallint");
@@ -139,13 +133,12 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.AttributeItem", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("AttributeID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("AttributeID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Ml_Name")
                         .HasColumnType("nvarchar(max)");
@@ -159,16 +152,15 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.Badge", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedByID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CreatedByID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
                         .HasColumnType("smallint");
@@ -187,16 +179,15 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.Brand", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedByID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CreatedByID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
                         .HasColumnType("smallint");
@@ -219,16 +210,15 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.Category", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedByID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CreatedByID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
                         .HasColumnType("smallint");
@@ -244,8 +234,8 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long?>("ParentID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid?>("ParentID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ID");
 
@@ -256,16 +246,15 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.Country", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedByID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CreatedByID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
                         .HasColumnType("smallint");
@@ -284,16 +273,15 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.Product", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("ApprovedBy")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("ApprovedBy")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("BrandID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("BrandID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
@@ -301,8 +289,8 @@ namespace eCommercebackend.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedByID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CreatedByID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
                         .HasColumnType("smallint");
@@ -329,8 +317,8 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("SizeGuildID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("SizeGuildID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Taxable")
                         .HasColumnType("bit");
@@ -347,11 +335,11 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.ProductAttributeItem", b =>
                 {
-                    b.Property<long>("ProductID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("ProductID")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("AttributeItemID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("AttributeItemID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ProductID", "AttributeItemID");
 
@@ -362,11 +350,11 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.ProductBadge", b =>
                 {
-                    b.Property<long>("ProductID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("ProductID")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("BadgeID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("BadgeID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ProductID", "BadgeID");
 
@@ -377,11 +365,11 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.ProductCategory", b =>
                 {
-                    b.Property<long>("ProductID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("ProductID")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("CategoryID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CategoryID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ProductID", "CategoryID");
 
@@ -392,11 +380,11 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.ProductCountry", b =>
                 {
-                    b.Property<long>("ProductID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("ProductID")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("CountryID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CountryID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ProductID", "CountryID");
 
@@ -407,14 +395,14 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.ProductStore", b =>
                 {
-                    b.Property<long>("ProductID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("ProductID")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("CountryID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CountryID")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("StoreID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("StoreID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ProductID", "CountryID", "StoreID");
 
@@ -427,14 +415,14 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.ProductSupplier", b =>
                 {
-                    b.Property<long>("ProductID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("ProductID")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("CountryID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CountryID")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("SupplierID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("SupplierID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ProductID", "CountryID", "SupplierID");
 
@@ -447,11 +435,11 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.ProductTag", b =>
                 {
-                    b.Property<long>("ProductID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("ProductID")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("TagID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("TagID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ProductID", "TagID");
 
@@ -462,25 +450,21 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.Purchase", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("ApprovedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("ApprovedByID")
-                        .HasColumnType("bigint");
-
-                    b.Property<string>("ApprovedById")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("ApprovedByID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedByID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CreatedByID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -499,8 +483,8 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("SupplierID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("SupplierID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(18,3)");
@@ -508,15 +492,12 @@ namespace eCommercebackend.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
-                    b.Property<long>("WaerhouseID")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("WarehouseID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("WarehouseID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("ApprovedById");
+                    b.HasIndex("ApprovedByID");
 
                     b.HasIndex("SupplierID");
 
@@ -527,11 +508,11 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.PurchaseItem", b =>
                 {
-                    b.Property<long>("SkuID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("SkuID")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("PurchaseID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("PurchaseID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Qty")
                         .HasColumnType("int");
@@ -545,22 +526,21 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.PurchaseReceive", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("PurchaseID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("PurchaseID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("ReceiveAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ReceiveById")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid?>("ReceiveById")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("ReciveByID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("ReciveByID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ID");
 
@@ -573,11 +553,11 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.PurchaseReceiveItem", b =>
                 {
-                    b.Property<long>("SkuID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("SkuID")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("PurchaseReceiveID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("PurchaseReceiveID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Qty")
                         .HasColumnType("int");
@@ -591,10 +571,9 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.Sku", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Md_Images")
                         .HasColumnType("nvarchar(max)");
@@ -603,8 +582,8 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("ProductID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("ProductID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -618,11 +597,11 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.SkuVariationItem", b =>
                 {
-                    b.Property<long>("SkuID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("SkuID")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("VariationItemID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("VariationItemID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("SkuID", "VariationItemID");
 
@@ -633,16 +612,15 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.StatusHistory", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedByID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CreatedByID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
                         .HasColumnType("smallint");
@@ -656,8 +634,8 @@ namespace eCommercebackend.Migrations
                     b.Property<DateTime>("SetAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("SetterID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("SetterID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
@@ -669,16 +647,15 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.Store", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedByID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CreatedByID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
                         .HasColumnType("smallint");
@@ -700,16 +677,15 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.Supplier", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedByID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CreatedByID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
                         .HasColumnType("smallint");
@@ -731,16 +707,15 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.Tag", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedByID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CreatedByID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
                         .HasColumnType("smallint");
@@ -759,16 +734,15 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.Variation", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedByID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CreatedByID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
                         .HasColumnType("smallint");
@@ -790,10 +764,9 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.VariationItem", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Ml_Name")
                         .IsRequired()
@@ -802,8 +775,8 @@ namespace eCommercebackend.Migrations
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("VariationID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("VariationID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ID");
 
@@ -814,16 +787,15 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.Warehouse", b =>
                 {
-                    b.Property<long>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("CreatedByID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("CreatedByID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
                         .HasColumnType("smallint");
@@ -842,11 +814,11 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.WarehouseArea", b =>
                 {
-                    b.Property<long>("WarehouseID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("WarehouseID")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<long>("AreaID")
-                        .HasColumnType("bigint");
+                    b.Property<Guid>("AreaID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("DeliveryCost")
                         .HasColumnType("decimal(18,3)");
@@ -872,15 +844,7 @@ namespace eCommercebackend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.Models.Area", "ParentArea")
-                        .WithMany()
-                        .HasForeignKey("ParentAreaID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Country");
-
-                    b.Navigation("ParentArea");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.AttributeItem", b =>
@@ -1067,7 +1031,9 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "ApprovedBy")
                         .WithMany()
-                        .HasForeignKey("ApprovedById");
+                        .HasForeignKey("ApprovedByID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("eCommerce_backend.Models.Supplier", "Supplier")
                         .WithMany()
@@ -1077,7 +1043,9 @@ namespace eCommercebackend.Migrations
 
                     b.HasOne("eCommerce_backend.Models.Warehouse", "Warehouse")
                         .WithMany()
-                        .HasForeignKey("WarehouseID");
+                        .HasForeignKey("WarehouseID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ApprovedBy");
 

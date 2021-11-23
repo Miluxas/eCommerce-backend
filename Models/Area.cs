@@ -15,9 +15,9 @@ namespace eCommerce_backend.Models
     {
         [Required]
         public string Ml_Name { get; set; }
-        public Int64 ParentAreaID { get; set; }
-        public Area ParentArea { get; set; }
-        public Int64 CountryID { get; set; }
+        //public Guid ParentAreaID { get; set; }
+      //  public Area ParentArea { get; set; }
+        public Guid CountryID { get; set; }
         public Country Country  { get; set; }
         public IList<WarehouseArea> WarehouseAreas { get; set; }
 

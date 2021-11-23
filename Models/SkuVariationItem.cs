@@ -13,9 +13,9 @@ namespace eCommerce_backend.Models
 {
     public class SkuVariationItem
     {
-        public Int64 SkuID { get; set; }
+        public Guid SkuID { get; set; }
         public Sku Sku { get; set; }
-        public Int64 VariationItemID { get; set; }
+        public Guid VariationItemID { get; set; }
         public VariationItem VariationItem { get; set; }
 
     }

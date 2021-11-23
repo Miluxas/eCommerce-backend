@@ -13,9 +13,9 @@ namespace eCommerce_backend.Models
 {
     public class OrderItem
     {
-        public Int64 OrderID { get; set; }
+        public Guid OrderID { get; set; }
         public Order Order { get; set; }
-        public Int64 SkuID { get; set; }
+        public Guid SkuID { get; set; }
         public Sku Sku { get; set; }
         public int Qty { get; set; }
         [Required]

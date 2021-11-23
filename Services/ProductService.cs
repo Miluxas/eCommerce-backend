@@ -13,7 +13,7 @@ namespace eCommerce_backend.Services
         {
         }
 
-        override public async Task<Product> Detail(Int64 id)
+        override public async Task<Product> Detail(Guid id)
         {
             var query = _context.Products
                // .Join(

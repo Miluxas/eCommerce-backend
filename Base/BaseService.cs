@@ -23,7 +23,7 @@ namespace eCommerce_backend.Base
         {
             return await _ts.ToListAsync();
         }
-        virtual public async Task<T> Detail(Int64 id)
+        virtual public async Task<T> Detail(Guid id)
         {
             return await _ts.AsNoTracking<T>().FirstAsync<T>(e => e.ID == id);
         }

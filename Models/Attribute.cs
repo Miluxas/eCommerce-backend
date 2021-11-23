@@ -38,10 +38,10 @@ namespace eCommerce_backend.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
-        public Int64 ID { get; set; }
+        public Guid ID { get; set; }
         [Required]
         [ForeignKey("Attribute")]
-        public Int64 AttributeID { get; set; }
+        public Guid AttributeID { get; set; }
         public Attribute Attribute { get; set; }
         public string Ml_Name { get; set; }
         public IList<ProductAttributeItem> ProductAttributeItems { get; set; }

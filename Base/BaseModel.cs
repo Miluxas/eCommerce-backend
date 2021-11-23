@@ -15,7 +15,7 @@ namespace eCommerce_backend.Base
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
-        public Int64 ID { get; set; }
+        public Guid ID { get; set; }
 
         [Required]
         public bool IsActive { get; set; }
@@ -25,7 +25,7 @@ namespace eCommerce_backend.Base
         public DateTime CreatedAt { get; set; }
         
         [Required]
-        public Int64 CreatedByID { get; set; }
+        public Guid CreatedByID { get; set; }
         
         [Required]
         public Int16 DeleteStatus { get; set; }

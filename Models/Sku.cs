@@ -16,11 +16,11 @@ namespace eCommerce_backend.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
-        public Int64 ID { get; set; }
+        public Guid ID { get; set; }
 
         [Required]
         [ForeignKey("Product")]
-        public Int64 ProductID { get; set; }
+        public Guid ProductID { get; set; }
         public Product Product { get; set; }
         [Required]
         public string Ml_Name { get; set; }

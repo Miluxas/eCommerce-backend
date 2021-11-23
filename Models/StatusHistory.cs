@@ -13,7 +13,7 @@ namespace eCommerce_backend.Models
     public class StatusHistory : BaseModel
     {
         public string Status { get; set; }
-        public Int64 SetterID { get; set; }
+        public Guid SetterID { get; set; }
         public string EntityName { get; set; }
         public DateTime SetAt { get; set; }
     }
