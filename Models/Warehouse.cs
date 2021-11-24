@@ -15,7 +15,7 @@ namespace eCommerce_backend.Models
     {
         [Required]
         public string Ml_Name { get; set; }
-        public IList<WarehouseArea> WarehouseAreas { get; set; }
+        public virtual IList<WarehouseArea> WarehouseAreas { get; set; }
 
 
         [NotMapped]

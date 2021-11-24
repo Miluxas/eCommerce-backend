@@ -14,10 +14,10 @@ namespace eCommerce_backend.Models
     public class ProductStore
     {
         public Guid ProductID { get; set; }
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
         public Guid StoreID { get; set; }
-        public Store Store { get; set; }
+        public virtual Store Store { get; set; }
         public Guid CountryID { get; set; }
-        public Country Country { get; set; }
+        public virtual Country Country { get; set; }
     }
 }

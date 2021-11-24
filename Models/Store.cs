@@ -16,7 +16,7 @@ namespace eCommerce_backend.Models
         [Required]
         public string Ml_Name { get; set; }
         public string Md_Image { get; set; }
-        public IList<ProductStore> ProductStores { get; set; }
+        public virtual IList<ProductStore> ProductStores { get; set; }
 
         [NotMapped]
 

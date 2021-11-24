@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using eCommerce_backend.Base;
 using eCommerce_backend.Models;
-using eCommerce_backend.Base;
+using Microsoft.EntityFrameworkCore;
 
 namespace eCommerce_backend.Data
 {
@@ -39,6 +35,7 @@ namespace eCommerce_backend.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<IdentityAuth.ApplicationUser>().ToView("ApplicationUser");
             modelBuilder.Entity<Brand>().ToTable("Brand");
             modelBuilder.Entity<Badge>().ToTable("Badge");
             modelBuilder.Entity<Category>().ToTable("Category");
@@ -162,7 +159,6 @@ namespace eCommerce_backend.Data
                 .HasOne(pB => pB.Area)
                 .WithMany(p => p.WarehouseAreas)
                 .HasForeignKey(pB => pB.WarehouseID);
-
         }
     }
 }

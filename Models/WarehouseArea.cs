@@ -15,9 +15,9 @@ namespace eCommerce_backend.Models
     {
        
         public Guid WarehouseID { get; set; }
-        public Warehouse Warehouse { get; set; }
+        public virtual Warehouse Warehouse { get; set; }
         public Guid AreaID { get; set; }
-        public Area Area { get; set; }
+        public virtual Area Area { get; set; }
         public bool IsActive { get; set; }
         public int DeliveryMaxDay { get; set; }
         [Column(TypeName = "decimal(18, 3)")]

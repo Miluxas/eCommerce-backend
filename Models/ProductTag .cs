@@ -15,8 +15,8 @@ namespace eCommerce_backend.Models
     {
        
         public Guid ProductID { get; set; }
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
         public Guid TagID { get; set; }
-        public Tag Tag { get; set; }
+        public virtual Tag Tag { get; set; }
     }
 }

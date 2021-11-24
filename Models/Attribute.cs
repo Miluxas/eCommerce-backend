@@ -16,8 +16,7 @@ namespace eCommerce_backend.Models
     {
         [Required]
         public string Ml_Name { get; set; }
-        [InverseProperty("Attribute")]
-        public ICollection<AttributeItem> Items { get; set; }
+        public virtual ICollection<AttributeItem> Items { get; set; }
         [NotMapped]
         public Dictionary<string, string> Name
         {
@@ -40,11 +39,10 @@ namespace eCommerce_backend.Models
         [Required]
         public Guid ID { get; set; }
         [Required]
-        [ForeignKey("Attribute")]
         public Guid AttributeID { get; set; }
-        public Attribute Attribute { get; set; }
+        //public virtual Attribute Attribute { get; set; }
         public string Ml_Name { get; set; }
-        public IList<ProductAttributeItem> ProductAttributeItems { get; set; }
+        public virtual IList<ProductAttributeItem> ProductAttributeItems { get; set; }
 
         [NotMapped]
         public Dictionary<string, string> Name

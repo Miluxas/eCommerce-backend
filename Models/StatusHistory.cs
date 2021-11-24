@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using eCommerce_backend.Base;
+using eCommerce_backend.IdentityAuth;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
@@ -14,6 +15,7 @@ namespace eCommerce_backend.Models
     {
         public string Status { get; set; }
         public Guid SetterID { get; set; }
+        public virtual ApplicationUser Setter { get; set; }
         public string EntityName { get; set; }
         public DateTime SetAt { get; set; }
     }

@@ -21,7 +21,7 @@ namespace eCommerce_backend.Models
         public string Status { get; set; }
 
         public Guid UserID { get; set; }
-        public IdentityAuth.ApplicationUser User { get; set; }
+        public virtual IdentityAuth.ApplicationUser User { get; set; }
         [Required]
         [Column(TypeName = "decimal(18, 3)")]
         public decimal SubTotal { get; set; }
@@ -54,7 +54,7 @@ namespace eCommerce_backend.Models
 
 
         [InverseProperty("Order")]
-        public IList<OrderItem> Items { get; set; } 
+        public virtual IList<OrderItem> Items { get; set; } 
     }
     public class ExtraDetail
     {

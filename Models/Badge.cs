@@ -16,7 +16,7 @@ namespace eCommerce_backend.Models
 
         [Required]
         public string Ml_Name { get; set; }
-        public IList<ProductBadge> ProductBadges { get; set; }
+        public virtual IList<ProductBadge> ProductBadges { get; set; }
 
         [NotMapped]
         public Dictionary<string, string> Name

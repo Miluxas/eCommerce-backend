@@ -18,8 +18,8 @@ namespace eCommerce_backend.Models
         //public Guid ParentAreaID { get; set; }
       //  public Area ParentArea { get; set; }
         public Guid CountryID { get; set; }
-        public Country Country  { get; set; }
-        public IList<WarehouseArea> WarehouseAreas { get; set; }
+        public virtual Country Country  { get; set; }
+        public virtual IList<WarehouseArea> WarehouseAreas { get; set; }
 
 
         [NotMapped]

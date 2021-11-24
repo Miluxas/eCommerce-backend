@@ -16,9 +16,10 @@ namespace eCommerce_backend.Controllers
     [ApiController]
     public class AttributeController : Base.BaseController<Models.Attribute>
     {
-        public AttributeController(ECommerceContext context, UserManager<ApplicationUser> userManager) : base(userManager)
+        public AttributeController(ECommerceContext context)
         {
             service = new Services.AttributeService(context.Attributes,context);
         }
+
     }
 }

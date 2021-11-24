@@ -15,7 +15,7 @@ namespace eCommerce_backend.Models
     {
         [Required]
         public string Ml_Name { get; set; }
-        public IList<ProductTag> ProductTags { get; set; }
+        public virtual IList<ProductTag> ProductTags { get; set; }
 
         [NotMapped]
         public Dictionary<string, string> Name

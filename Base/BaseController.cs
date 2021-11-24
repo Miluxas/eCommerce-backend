@@ -17,10 +17,8 @@ namespace eCommerce_backend.Base
     [ApiController]
     public class BaseController<T> : ControllerBase where T : BaseModel 
     {
-        private readonly UserManager<ApplicationUser> _userManager;
 
-        public BaseController(UserManager<ApplicationUser> userManager){
-            _userManager = userManager;
+        public BaseController(){
         }
         protected BaseService<T> service;
 
@@ -29,7 +27,6 @@ namespace eCommerce_backend.Base
         public async Task<IEnumerable<T>> Index()
         {
             var userEmail = User.FindFirstValue(ClaimTypes.Email);
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); // will give the user's userId
 
             return await service.List();
         }
@@ -49,7 +46,9 @@ namespace eCommerce_backend.Base
         [Route("Create")]
         public async Task<T> Create( T detail)
         {
-            return await service.Create(detail);
+            var userID =Guid.Parse( User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            return await service.Create(detail,userID);
         }
 
         // GET: [controller]/Details/5

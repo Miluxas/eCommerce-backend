@@ -32,7 +32,7 @@ namespace eCommerce_backend.Models
         public Guid ApprovedBy { get; set; }
         public string Code { get; set; }
         public Guid BrandID { get; set; }
-        public Brand Brand { get; set; }
+        public virtual Brand Brand { get; set; }
 
 
         [NotMapped]
@@ -48,14 +48,14 @@ namespace eCommerce_backend.Models
             }
         }
         [InverseProperty("Product")]
-        public ICollection<Sku> Skus { get; set; }
-        public IList<ProductAttributeItem> ProductAttributeItems { get; set; }
-        public IList<ProductBadge> ProductBadges { get; set; }
-        public IList<ProductCategory> ProductCategories { get; set; }
-        public IList<ProductCountry> ProductCountries { get; set; }
-        public IList<ProductStore> ProductStores { get; set; }
-        public IList<ProductSupplier> ProductSuppliers { get; set; }
-        public IList<ProductTag> ProductTags { get; set; }
+        public virtual ICollection<Sku> Skus { get; set; }
+        public virtual IList<ProductAttributeItem> ProductAttributeItems { get; set; }
+        public virtual IList<ProductBadge> ProductBadges { get; set; }
+        public virtual IList<ProductCategory> ProductCategories { get; set; }
+        public virtual IList<ProductCountry> ProductCountries { get; set; }
+        public virtual IList<ProductStore> ProductStores { get; set; }
+        public virtual IList<ProductSupplier> ProductSuppliers { get; set; }
+        public virtual IList<ProductTag> ProductTags { get; set; }
 
 
     }

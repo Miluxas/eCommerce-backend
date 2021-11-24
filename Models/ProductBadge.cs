@@ -14,9 +14,9 @@ namespace eCommerce_backend.Models
     public class ProductBadge
     {
         public Guid ProductID { get; set; }
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
 
         public Guid BadgeID { get; set; }
-        public Badge Badge { get; set; }
+        public virtual Badge Badge { get; set; }
     }
 }

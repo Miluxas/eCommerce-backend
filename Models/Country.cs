@@ -15,10 +15,10 @@ namespace eCommerce_backend.Models
     {
         [Required]
         public string Ml_Name { get; set; }
-        public IList<ProductCountry> ProductCountries { get; set; }
-        public IList<ProductStore> ProductStores { get; set; }
-        public IList<ProductSupplier> ProductSuppliers { get; set; }
-        public IList<Area> Areas { get; set; }
+        public virtual IList<ProductCountry> ProductCountries { get; set; }
+        public virtual IList<ProductStore> ProductStores { get; set; }
+        public virtual IList<ProductSupplier> ProductSuppliers { get; set; }
+        public virtual IList<Area> Areas { get; set; }
 
 
         [NotMapped]

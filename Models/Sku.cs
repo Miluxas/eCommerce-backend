@@ -21,12 +21,12 @@ namespace eCommerce_backend.Models
         [Required]
         [ForeignKey("Product")]
         public Guid ProductID { get; set; }
-        public Product Product { get; set; }
+        public virtual Product Product { get; set; }
         [Required]
         public string Ml_Name { get; set; }
         public string Value { get; set; }
         public string Md_Images { get; set; }
-        public IList<SkuVariationItem> SkuVariationItems { get; set; }
+        public virtual IList<SkuVariationItem> SkuVariationItems { get; set; }
         [NotMapped]
 
         public List<Media>? Images

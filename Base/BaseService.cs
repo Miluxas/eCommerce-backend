@@ -19,18 +19,18 @@ namespace eCommerce_backend.Base
             _context = context;
         }
 
-        public async Task<IEnumerable<T>> List()
+        virtual public async Task<IEnumerable<T>> List()
         {
             return await _ts.ToListAsync();
         }
         virtual public async Task<T> Detail(Guid id)
         {
-            return await _ts.AsNoTracking<T>().FirstAsync<T>(e => e.ID == id);
+            return await _ts.AsSingleQuery<T>().FirstAsync<T>(e => e.ID == id);
         }
-        public async Task<T> Create(T entity)
+        public async Task<T> Create(T entity,Guid userID)
         {
             entity.CreatedAt = DateTime.UtcNow;
-        
+            entity.CreatedByID = userID;
             await _ts.AddAsync(entity);
             await _context.SaveChangesAsync();
             return await _ts.AsNoTracking<T>().FirstAsync<T>(e => e.ID == entity.ID);

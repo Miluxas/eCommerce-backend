@@ -18,7 +18,7 @@ namespace eCommerce_backend.Models
         [Required]
         public int Type { get; set; }
         [InverseProperty("Variation")]
-        public ICollection<VariationItem> Items { get; set; }
+        public virtual ICollection<VariationItem> Items { get; set; }
         [NotMapped]
         public Dictionary<string, string> Name
         {
@@ -42,11 +42,11 @@ namespace eCommerce_backend.Models
         [Required]
         [ForeignKey("Variation")]
         public Guid VariationID { get; set; }
-        public Variation Variation { get; set; }
+        public virtual Variation Variation { get; set; }
         [Required]
         public string Ml_Name { get; set; }
         public string Value { get; set; }
-        public IList<SkuVariationItem> SkuVariationItems { get; set; }
+        public virtual IList<SkuVariationItem> SkuVariationItems { get; set; }
 
         [NotMapped]
         public Dictionary<string, string> Name

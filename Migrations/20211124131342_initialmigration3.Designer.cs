@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eCommerce_backend.Data;
 
-namespace eCommercebackend.Migrations
+namespace eCommercebackend.Migrations.ECommerce
 {
     [DbContext(typeof(ECommerceContext))]
-    partial class ECommerceContextModelSnapshot : ModelSnapshot
+    [Migration("20211124131342_initialmigration3")]
+    partial class initialmigration3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,6 +103,8 @@ namespace eCommercebackend.Migrations
 
                     b.HasIndex("CountryID");
 
+                    b.HasIndex("CreatedByID");
+
                     b.ToTable("Area");
                 });
 
@@ -127,6 +131,8 @@ namespace eCommercebackend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("CreatedByID");
 
                     b.ToTable("Attribute");
                 });
@@ -174,6 +180,8 @@ namespace eCommercebackend.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("CreatedByID");
+
                     b.ToTable("Badge");
                 });
 
@@ -204,6 +212,8 @@ namespace eCommercebackend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("CreatedByID");
 
                     b.ToTable("Brand");
                 });
@@ -239,6 +249,8 @@ namespace eCommercebackend.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("CreatedByID");
+
                     b.HasIndex("ParentID");
 
                     b.ToTable("Category");
@@ -267,6 +279,8 @@ namespace eCommercebackend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("CreatedByID");
 
                     b.ToTable("Country");
                 });
@@ -329,6 +343,8 @@ namespace eCommercebackend.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("BrandID");
+
+                    b.HasIndex("CreatedByID");
 
                     b.ToTable("Product");
                 });
@@ -499,6 +515,8 @@ namespace eCommercebackend.Migrations
 
                     b.HasIndex("ApprovedByID");
 
+                    b.HasIndex("CreatedByID");
+
                     b.HasIndex("SupplierID");
 
                     b.HasIndex("WarehouseID");
@@ -642,6 +660,8 @@ namespace eCommercebackend.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("CreatedByID");
+
                     b.ToTable("StatusHistory");
                 });
 
@@ -671,6 +691,8 @@ namespace eCommercebackend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("CreatedByID");
 
                     b.ToTable("Store");
                 });
@@ -702,6 +724,8 @@ namespace eCommercebackend.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("CreatedByID");
+
                     b.ToTable("Supplier");
                 });
 
@@ -728,6 +752,8 @@ namespace eCommercebackend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("CreatedByID");
 
                     b.ToTable("Tag");
                 });
@@ -758,6 +784,8 @@ namespace eCommercebackend.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("CreatedByID");
 
                     b.ToTable("Variation");
                 });
@@ -809,6 +837,8 @@ namespace eCommercebackend.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("CreatedByID");
+
                     b.ToTable("Warehouse");
                 });
 
@@ -844,7 +874,26 @@ namespace eCommercebackend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedByID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Country");
+
+                    b.Navigation("CreatedBy");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Models.Attribute", b =>
+                {
+                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedByID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.AttributeItem", b =>
@@ -858,13 +907,54 @@ namespace eCommercebackend.Migrations
                     b.Navigation("Attribute");
                 });
 
+            modelBuilder.Entity("eCommerce_backend.Models.Badge", b =>
+                {
+                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedByID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Models.Brand", b =>
+                {
+                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedByID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+                });
+
             modelBuilder.Entity("eCommerce_backend.Models.Category", b =>
                 {
+                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedByID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("eCommerce_backend.Models.Category", "Parent")
                         .WithMany()
                         .HasForeignKey("ParentID");
 
+                    b.Navigation("CreatedBy");
+
                     b.Navigation("Parent");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Models.Country", b =>
+                {
+                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedByID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Product", b =>
@@ -875,7 +965,15 @@ namespace eCommercebackend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedByID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Brand");
+
+                    b.Navigation("CreatedBy");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.ProductAttributeItem", b =>
@@ -1035,6 +1133,12 @@ namespace eCommercebackend.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedByID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("eCommerce_backend.Models.Supplier", "Supplier")
                         .WithMany()
                         .HasForeignKey("SupplierID")
@@ -1048,6 +1152,8 @@ namespace eCommercebackend.Migrations
                         .IsRequired();
 
                     b.Navigation("ApprovedBy");
+
+                    b.Navigation("CreatedBy");
 
                     b.Navigation("Supplier");
 
@@ -1139,6 +1245,61 @@ namespace eCommercebackend.Migrations
                     b.Navigation("VariationItem");
                 });
 
+            modelBuilder.Entity("eCommerce_backend.Models.StatusHistory", b =>
+                {
+                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedByID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Models.Store", b =>
+                {
+                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedByID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Models.Supplier", b =>
+                {
+                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedByID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Models.Tag", b =>
+                {
+                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedByID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Models.Variation", b =>
+                {
+                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedByID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+                });
+
             modelBuilder.Entity("eCommerce_backend.Models.VariationItem", b =>
                 {
                     b.HasOne("eCommerce_backend.Models.Variation", "Variation")
@@ -1148,6 +1309,17 @@ namespace eCommercebackend.Migrations
                         .IsRequired();
 
                     b.Navigation("Variation");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Models.Warehouse", b =>
+                {
+                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedByID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.WarehouseArea", b =>
