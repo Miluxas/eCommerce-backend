@@ -10,14 +10,16 @@ using eCommerce_backend.Models;
 using eCommerce_backend.IdentityAuth;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace eCommerce_backend.Base
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("[controller]")]
     [ApiController]
     public class BaseController<T> : ControllerBase where T : BaseModel 
     {
-
         public BaseController(){
         }
         protected BaseService<T> service;

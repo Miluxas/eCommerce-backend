@@ -33,7 +33,7 @@ namespace eCommerce_backend.Base
             entity.CreatedByID = userID;
             await _ts.AddAsync(entity);
             await _context.SaveChangesAsync();
-            return await _ts.AsNoTracking<T>().FirstAsync<T>(e => e.ID == entity.ID);
+            return await _ts.AsSingleQuery<T>().FirstAsync<T>(e => e.ID == entity.ID);
         }
     }
 }

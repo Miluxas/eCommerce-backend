@@ -9,6 +9,8 @@ using eCommerce_backend.Data;
 using eCommerce_backend.Models;
 using Microsoft.AspNetCore.Identity;
 using eCommerce_backend.IdentityAuth;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace eCommerce_backend.Controllers
 {

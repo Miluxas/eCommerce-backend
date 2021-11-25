@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using eCommerce_backend.Data;
+using Microsoft.AspNetCore.Diagnostics;
+using Microsoft.AspNetCore.Http;
 
 namespace eCommerce_backend
 {
@@ -27,11 +29,7 @@ namespace eCommerce_backend
         {
             services.AddDbContext<IdentityContext>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
             services.AddDbContext<ECommerceContext>(options => options.UseLazyLoadingProxies().UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
-            services.AddControllers();
             // For Identity
-            services.AddIdentity<ApplicationUser, ApplicationRole>()
-            .AddEntityFrameworkStores<IdentityContext>()
-            .AddDefaultTokenProviders();
             // Adding Authentication
             services.AddAuthentication(options =>
             {
@@ -50,9 +48,17 @@ namespace eCommerce_backend
                     ValidateAudience = true,
                     ValidAudience = Configuration["JWT: ValidAudience"],
                     ValidIssuer = Configuration["JWT: ValidIssuer"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT: SecretKey"]))
+                    RequireExpirationTime = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT: SecretKey"])),
+                    ValidateIssuerSigningKey = true,
                 };
             });
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+            .AddEntityFrameworkStores<IdentityContext>()
+            .AddDefaultTokenProviders();
+            services.AddCors();
+            services.AddControllers();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -62,10 +68,15 @@ namespace eCommerce_backend
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseExceptionHandler(a => a.Run(async context =>
+            {
+                var exceptionHandlerPathFeature = context.Features.Get<IExceptionHandlerPathFeature>();
+                var exception = exceptionHandlerPathFeature.Error;
 
-            app.UseRouting();
-
+                await context.Response.WriteAsJsonAsync(new { error = exception.Message });
+            }));
             app.UseAuthentication();
+            app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
