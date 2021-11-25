@@ -24,7 +24,6 @@ namespace eCommerce_backend.Base
         }
         protected BaseService<T> service;
 
-        // GET: [controller]
         [HttpGet]
         public async Task<IEnumerable<T>> Index()
         {
@@ -62,6 +61,11 @@ namespace eCommerce_backend.Base
             return await service.Update(detail, userID);
         }
 
-        // GET: [controller]/Details/5
+        [HttpDelete]
+        [Route("Delete")]
+        public async Task<Boolean> Delete(Guid id)
+        {
+            return await service.Delete(id);
+        }
     }
 }

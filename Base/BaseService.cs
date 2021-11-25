@@ -41,5 +41,16 @@ namespace eCommerce_backend.Base
             await _context.SaveChangesAsync();
             return await _ts.AsSingleQuery<T>().FirstAsync<T>(e => e.ID == entity.ID);
         }
+        public async Task<Boolean> Delete(Guid id)
+        {
+            var model=await _ts.AsSingleQuery<T>().FirstAsync<T>(e => e.ID == id);
+            if (model != null)
+            {
+                model.DeleteStatus = 1;
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            return false;
+        }
     }
 }
