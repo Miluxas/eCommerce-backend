@@ -35,5 +35,11 @@ namespace eCommerce_backend.Base
             await _context.SaveChangesAsync();
             return await _ts.AsSingleQuery<T>().FirstAsync<T>(e => e.ID == entity.ID);
         }
+        public async Task<T> Update(T entity, Guid userID)
+        {
+            _ts.Update(entity);
+            await _context.SaveChangesAsync();
+            return await _ts.AsSingleQuery<T>().FirstAsync<T>(e => e.ID == entity.ID);
+        }
     }
 }

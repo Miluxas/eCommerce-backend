@@ -68,13 +68,6 @@ namespace eCommerce_backend
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.UseExceptionHandler(a => a.Run(async context =>
-            {
-                var exceptionHandlerPathFeature = context.Features.Get<IExceptionHandlerPathFeature>();
-                var exception = exceptionHandlerPathFeature.Error;
-
-                await context.Response.WriteAsJsonAsync(new { error = exception.Message });
-            }));
             app.UseAuthentication();
             app.UseRouting();
             app.UseAuthorization();

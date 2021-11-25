@@ -53,6 +53,15 @@ namespace eCommerce_backend.Base
             return await service.Create(detail,userID);
         }
 
+        [HttpPost]
+        [Route("Update")]
+        public async Task<T> Update(T detail)
+        {
+            var userID = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            return await service.Update(detail, userID);
+        }
+
         // GET: [controller]/Details/5
     }
 }
