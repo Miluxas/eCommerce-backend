@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-
+using static eCommerce_backend.Base.BaseController<T>;
 
 namespace eCommerce_backend.Base
 {
@@ -19,15 +19,15 @@ namespace eCommerce_backend.Base
             _context = context;
         }
 
-        virtual public async Task<IEnumerable<T>> List()
+        virtual public async Task<IEnumerable<T>> List(ListBody listBody)
         {
-            return await _ts.ToListAsync();
+            return await _ts.Take(listBody.Limit).ToListAsync();
         }
         virtual public async Task<T> Detail(Guid id)
         {
             return await _ts.AsSingleQuery<T>().FirstAsync<T>(e => e.ID == id);
         }
-        public async Task<T> Create(T entity,Guid userID)
+        virtual public async Task<T> Create(T entity,Guid userID)
         {
             entity.CreatedAt = DateTime.UtcNow;
             entity.CreatedByID = userID;

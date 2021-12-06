@@ -47,8 +47,7 @@ namespace eCommerce_backend.Models
                 Ml_Name = JsonConvert.SerializeObject(value);
             }
         }
-        [InverseProperty("Product")]
-        public virtual ICollection<Sku> Skus { get; set; }
+        public virtual IList<Sku> Skus { get; set; }
         public virtual IList<ProductAttributeItem> ProductAttributeItems { get; set; }
         public virtual IList<ProductBadge> ProductBadges { get; set; }
         public virtual IList<ProductCategory> ProductCategories { get; set; }

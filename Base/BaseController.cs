@@ -20,16 +20,22 @@ namespace eCommerce_backend.Base
     [ApiController]
     public class BaseController<T> : ControllerBase where T : BaseModel 
     {
+        public class ListBody
+        {
+            public int Page { get; set; }
+            public int Limit { get; set; }
+            public dynamic Filter { get; set; }
+
+        }
         public BaseController(){
         }
         protected BaseService<T> service;
 
-        [HttpGet]
-        public async Task<IEnumerable<T>> Index()
+        [HttpPost]
+        public async Task<IEnumerable<T>> Index(ListBody listBody)
         {
-            var userEmail = User.FindFirstValue(ClaimTypes.Email);
 
-            return await service.List();
+            return await service.List(listBody);
         }
 
         [HttpGet]
@@ -45,7 +51,7 @@ namespace eCommerce_backend.Base
 
         [HttpPost]
         [Route("Create")]
-        public async Task<T> Create( T detail)
+        virtual public async Task<T> Create( T detail)
         {
             var userID =Guid.Parse( User.FindFirstValue(ClaimTypes.NameIdentifier));
 
