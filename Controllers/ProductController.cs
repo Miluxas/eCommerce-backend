@@ -19,7 +19,7 @@ namespace eCommerce_backend.Controllers
     [ApiController]
     public class ProductController : Base.BaseController<Product>
     {
-        public ProductController(ECommerceContext context)
+        public ProductController(Guid userID, ECommerceContext context) : base(userID)
         {
             service = new Services.ProductService(context.Products,context);
         }

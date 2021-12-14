@@ -16,7 +16,7 @@ namespace eCommerce_backend.Controllers
     [ApiController]
     public class VariationController : Base.BaseController<Variation>
     {
-        public VariationController(ECommerceContext context)
+        public VariationController(Guid userID, ECommerceContext context) : base(userID)
         {
             service = new Services.VariationService(context.Variations,context);
         }

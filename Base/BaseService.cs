@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using static eCommerce_backend.Base.BaseController<T>;
+
 
 namespace eCommerce_backend.Base
 {

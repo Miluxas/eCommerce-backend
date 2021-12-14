@@ -1,33 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using eCommerce_backend.Data;
-using eCommerce_backend.Models;
-using eCommerce_backend.IdentityAuth;
-using Microsoft.AspNetCore.Identity;
-using System.Security.Claims;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace eCommerce_backend.Base
 {
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("[controller]")]
     [ApiController]
-    public class BaseController<T> : ControllerBase where T : BaseModel 
+    public partial class BaseController<T> : ControllerBase where T : BaseModel
     {
-        public class ListBody
+        Guid? _userID;
+        public BaseController(Guid? userID = null)
         {
-            public int Page { get; set; }
-            public int Limit { get; set; }
-            public dynamic Filter { get; set; }
-
-        }
-        public BaseController(){
+            _userID = userID;
         }
         protected BaseService<T> service;
 
@@ -51,20 +40,20 @@ namespace eCommerce_backend.Base
 
         [HttpPost]
         [Route("Create")]
-        virtual public async Task<T> Create( T detail)
+        virtual public async Task<T> Create(T detail)
         {
-            var userID =Guid.Parse( User.FindFirstValue(ClaimTypes.NameIdentifier));
-
-            return await service.Create(detail,userID);
+            if (!_userID.HasValue)
+                _userID = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            return await service.Create(detail, _userID.Value);
         }
 
         [HttpPost]
         [Route("Update")]
         public async Task<T> Update(T detail)
         {
-            var userID = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-
-            return await service.Update(detail, userID);
+            if (!_userID.HasValue)
+                _userID = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            return await service.Update(detail, _userID.Value);
         }
 
         [HttpDelete]
