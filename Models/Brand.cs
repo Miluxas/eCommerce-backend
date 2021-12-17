@@ -39,6 +39,7 @@ namespace eCommerce_backend.Models
             }
         }
         [NotMapped]
+        [Required]
         public Dictionary<string, string> Name
         {
             get

@@ -8,6 +8,7 @@ namespace eCommerce_backend.Data
     {
         public ECommerceContext(DbContextOptions<ECommerceContext> options) : base(options)
         { }
+        public DbSet<Area> Areas { get; set; }
         public DbSet<Badge> Badges { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Category> Categories { get; set; }
