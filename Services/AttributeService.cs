@@ -14,18 +14,5 @@ namespace eCommerce_backend.Services
 
         }
 
-
-    //    override public async Task<Models.Attribute> Detail(Guid id)
-    //    {
-    //        var query = _context.Attributes.Join(
-    //    _context.AttributeItems,
-    //    attribute => attribute.ID,
-    //    item => item.AttributeID,
-    //    (Attribute, item) => item
-    //).ToList();
-    //        var attri =await base.Detail(id);
-    //        attri.Items = query;
-    //        return attri;
-    //    }
     }
 }
