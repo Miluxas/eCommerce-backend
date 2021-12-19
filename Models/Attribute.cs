@@ -17,7 +17,7 @@ namespace eCommerce_backend.Models
         [Required]
         public string Ml_Name { get; set; }
         
-        public virtual ICollection<AttributeItem> Items { get; set; }
+        public virtual IList<AttributeItem> Items { get; set; }
         [NotMapped]
         public Dictionary<string, string> Name
         {
