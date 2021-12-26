@@ -19,7 +19,6 @@ namespace eCommerce_backend.Data
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Variation> Variations { get; set; }
         public DbSet<VariationItem> VariationItems { get; set; }
-
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductAttributeItem> ProductAttributeItems { get; set; }
         public DbSet<ProductBadge> ProductBadges { get; set; }
@@ -28,10 +27,11 @@ namespace eCommerce_backend.Data
         public DbSet<ProductStore> ProductStores { get; set; }
         public DbSet<ProductSupplier> ProductSuppliers { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
-
         public DbSet<Sku> Skus { get; set; }
         public DbSet<SkuVariationItem> SkuVariationItems { get; set; }
         public DbSet<StatusHistory> StatusHistories { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Purchase> Purchases { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -58,6 +58,8 @@ namespace eCommerce_backend.Data
             modelBuilder.Entity<Sku>().ToTable("Sku");
             modelBuilder.Entity<SkuVariationItem>().ToTable("SkuVariationItem");
             modelBuilder.Entity<StatusHistory>().ToTable("StatusHistory");
+            modelBuilder.Entity<Order>().ToTable("Order");
+            modelBuilder.Entity<Purchase>().ToTable("Purchase");
             modelBuilder.Ignore<Media>();
             modelBuilder.Ignore<ExtraDetail>();
 

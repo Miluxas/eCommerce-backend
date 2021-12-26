@@ -38,7 +38,7 @@ namespace eCommerce_backend.Base
         public async Task<T> Update(T entity, Guid userID)
         {
             _ts.Update(entity);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
             return await _ts.AsSingleQuery<T>().FirstAsync<T>(e => e.ID == entity.ID);
         }
         public async Task<Boolean> Delete(Guid id)
