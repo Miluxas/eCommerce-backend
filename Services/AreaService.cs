@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace eCommerce_backend.Services
 {
-    public class AreaService:Base.BaseService<Area>
+    public class AreaService:Base.BaseService<Models.Area>
     {
         public AreaService(DbSet<Area> ts,ECommerceContext context):base(ts,context) {
             
