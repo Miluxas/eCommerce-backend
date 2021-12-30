@@ -18,7 +18,7 @@ namespace eCommerce_backend.Controllers
     [ApiController]
     public class BrandController : Base.BaseController<Brand>
     {
-        public BrandController(ECommerceContext context,Guid? userID=null) :base(userID)
+        public BrandController(ECommerceContext context,Guid? userId=null) :base(userId)
         {
             service = new Services.BrandService(context.Brands,context);
         }

@@ -14,7 +14,7 @@ namespace eCommerce_backend.Models
     public class StatusHistory : BaseModel
     {
         public string Status { get; set; }
-        public Guid SetterID { get; set; }
+        public Guid SetterId { get; set; }
         public virtual ApplicationUser Setter { get; set; }
         public string EntityName { get; set; }
         public DateTime SetAt { get; set; }

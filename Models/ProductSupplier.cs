@@ -13,11 +13,11 @@ namespace eCommerce_backend.Models
 {
     public class ProductSupplier
     {
-        public Guid ProductID { get; set; }
+        public Guid ProductId { get; set; }
         public virtual Product Product { get; set; }
-        public Guid SupplierID { get; set; }
+        public Guid SupplierId { get; set; }
         public virtual Supplier Supplier { get; set; }
-        public Guid CountryID { get; set; }
+        public Guid CountryId { get; set; }
         public virtual Country Country { get; set; }
     }
 }

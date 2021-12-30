@@ -13,9 +13,9 @@ namespace eCommerce_backend.Models
 {
     public class ProductCategory
     {
-        public Guid ProductID { get; set; }
+        public Guid ProductId { get; set; }
         public virtual Product Product { get; set; }
-        public Guid CategoryID { get; set; }
+        public Guid CategoryId { get; set; }
         public virtual Category Category { get; set; }
     }
 }

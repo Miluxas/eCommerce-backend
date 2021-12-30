@@ -36,72 +36,72 @@ namespace eCommercebackend.Migrations
                 name: "Attribute",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ml_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedByID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedById = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DeleteStatus = table.Column<short>(type: "smallint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Attribute", x => x.ID);
+                    table.PrimaryKey("PK_Attribute", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Badge",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ml_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedByID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedById = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DeleteStatus = table.Column<short>(type: "smallint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Badge", x => x.ID);
+                    table.PrimaryKey("PK_Badge", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Brand",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ml_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Md_Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedByID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedById = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DeleteStatus = table.Column<short>(type: "smallint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Brand", x => x.ID);
+                    table.PrimaryKey("PK_Brand", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Category",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ml_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Mm_Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ParentID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    ParentId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedByID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedById = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DeleteStatus = table.Column<short>(type: "smallint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Category", x => x.ID);
+                    table.PrimaryKey("PK_Category", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Category_Category_ParentID",
-                        column: x => x.ParentID,
+                        name: "FK_Category_Category_ParentId",
+                        column: x => x.ParentId,
                         principalTable: "Category",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -109,136 +109,136 @@ namespace eCommercebackend.Migrations
                 name: "Country",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ml_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedByID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedById = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DeleteStatus = table.Column<short>(type: "smallint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Country", x => x.ID);
+                    table.PrimaryKey("PK_Country", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "StatusHistory",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SetterID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SetterId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     EntityName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SetAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedByID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedById = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DeleteStatus = table.Column<short>(type: "smallint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_StatusHistory", x => x.ID);
+                    table.PrimaryKey("PK_StatusHistory", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Store",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ml_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Md_Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedByID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedById = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DeleteStatus = table.Column<short>(type: "smallint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Store", x => x.ID);
+                    table.PrimaryKey("PK_Store", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Supplier",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ml_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Md_Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedByID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedById = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DeleteStatus = table.Column<short>(type: "smallint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Supplier", x => x.ID);
+                    table.PrimaryKey("PK_Supplier", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Tag",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ml_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedByID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedById = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DeleteStatus = table.Column<short>(type: "smallint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tag", x => x.ID);
+                    table.PrimaryKey("PK_Tag", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Variation",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ml_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Type = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedByID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedById = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DeleteStatus = table.Column<short>(type: "smallint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Variation", x => x.ID);
+                    table.PrimaryKey("PK_Variation", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Warehouse",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ml_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedByID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedById = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DeleteStatus = table.Column<short>(type: "smallint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Warehouse", x => x.ID);
+                    table.PrimaryKey("PK_Warehouse", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "AttributeItem",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    AttributeID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AttributeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ml_Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AttributeItem", x => x.ID);
+                    table.PrimaryKey("PK_AttributeItem", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AttributeItem_Attribute_AttributeID",
-                        column: x => x.AttributeID,
+                        name: "FK_AttributeItem_Attribute_AttributeId",
+                        column: x => x.AttributeId,
                         principalTable: "Attribute",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -246,7 +246,7 @@ namespace eCommercebackend.Migrations
                 name: "Product",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ml_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Type = table.Column<int>(type: "int", nullable: false),
                     HasWrapping = table.Column<bool>(type: "bit", nullable: false),
@@ -254,24 +254,24 @@ namespace eCommercebackend.Migrations
                     HasCustomText = table.Column<bool>(type: "bit", nullable: false),
                     Ml_Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Taxable = table.Column<bool>(type: "bit", nullable: false),
-                    SizeGuildID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SizeGuildId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IsStandardProduct = table.Column<bool>(type: "bit", nullable: false),
                     ApprovedBy = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    BrandID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    BrandId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedByID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedById = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DeleteStatus = table.Column<short>(type: "smallint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Product", x => x.ID);
+                    table.PrimaryKey("PK_Product", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Product_Brand_BrandID",
-                        column: x => x.BrandID,
+                        name: "FK_Product_Brand_BrandId",
+                        column: x => x.BrandId,
                         principalTable: "Brand",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -279,22 +279,22 @@ namespace eCommercebackend.Migrations
                 name: "Area",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ml_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CountryID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedByID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedById = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DeleteStatus = table.Column<short>(type: "smallint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Area", x => x.ID);
+                    table.PrimaryKey("PK_Area", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Area_Country_CountryID",
-                        column: x => x.CountryID,
+                        name: "FK_Area_Country_CountryId",
+                        column: x => x.CountryId,
                         principalTable: "Country",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -302,19 +302,19 @@ namespace eCommercebackend.Migrations
                 name: "VariationItem",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    VariationID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    VariationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ml_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_VariationItem", x => x.ID);
+                    table.PrimaryKey("PK_VariationItem", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_VariationItem_Variation_VariationID",
-                        column: x => x.VariationID,
+                        name: "FK_VariationItem_Variation_VariationId",
+                        column: x => x.VariationId,
                         principalTable: "Variation",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -322,41 +322,41 @@ namespace eCommercebackend.Migrations
                 name: "Purchase",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Type = table.Column<int>(type: "int", nullable: false),
-                    SupplierID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    WarehouseID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SupplierId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    WarehouseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     InvoiceType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ApprovedByID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ApprovedById = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ApprovedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TotalPrice = table.Column<decimal>(type: "decimal(18,3)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    CreatedByID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CreatedById = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     DeleteStatus = table.Column<short>(type: "smallint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Purchase", x => x.ID);
+                    table.PrimaryKey("PK_Purchase", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Purchase_AspNetUsers_ApprovedByID",
-                        column: x => x.ApprovedByID,
+                        name: "FK_Purchase_AspNetUsers_ApprovedById",
+                        column: x => x.ApprovedById,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Purchase_Supplier_SupplierID",
-                        column: x => x.SupplierID,
+                        name: "FK_Purchase_Supplier_SupplierId",
+                        column: x => x.SupplierId,
                         principalTable: "Supplier",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Purchase_Warehouse_WarehouseID",
-                        column: x => x.WarehouseID,
+                        name: "FK_Purchase_Warehouse_WarehouseId",
+                        column: x => x.WarehouseId,
                         principalTable: "Warehouse",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -364,23 +364,23 @@ namespace eCommercebackend.Migrations
                 name: "ProductAttributeItem",
                 columns: table => new
                 {
-                    ProductID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    AttributeItemID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AttributeItemId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductAttributeItem", x => new { x.ProductID, x.AttributeItemID });
+                    table.PrimaryKey("PK_ProductAttributeItem", x => new { x.ProductId, x.AttributeItemId });
                     table.ForeignKey(
-                        name: "FK_ProductAttributeItem_AttributeItem_ProductID",
-                        column: x => x.ProductID,
+                        name: "FK_ProductAttributeItem_AttributeItem_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "AttributeItem",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductAttributeItem_Product_AttributeItemID",
-                        column: x => x.AttributeItemID,
+                        name: "FK_ProductAttributeItem_Product_AttributeItemId",
+                        column: x => x.AttributeItemId,
                         principalTable: "Product",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -388,23 +388,23 @@ namespace eCommercebackend.Migrations
                 name: "ProductBadge",
                 columns: table => new
                 {
-                    ProductID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    BadgeID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    BadgeId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductBadge", x => new { x.ProductID, x.BadgeID });
+                    table.PrimaryKey("PK_ProductBadge", x => new { x.ProductId, x.BadgeId });
                     table.ForeignKey(
-                        name: "FK_ProductBadge_Badge_ProductID",
-                        column: x => x.ProductID,
+                        name: "FK_ProductBadge_Badge_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Badge",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductBadge_Product_BadgeID",
-                        column: x => x.BadgeID,
+                        name: "FK_ProductBadge_Product_BadgeId",
+                        column: x => x.BadgeId,
                         principalTable: "Product",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -412,23 +412,23 @@ namespace eCommercebackend.Migrations
                 name: "ProductCategory",
                 columns: table => new
                 {
-                    ProductID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CategoryID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductCategory", x => new { x.ProductID, x.CategoryID });
+                    table.PrimaryKey("PK_ProductCategory", x => new { x.ProductId, x.CategoryId });
                     table.ForeignKey(
-                        name: "FK_ProductCategory_Category_ProductID",
-                        column: x => x.ProductID,
+                        name: "FK_ProductCategory_Category_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Category",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductCategory_Product_CategoryID",
-                        column: x => x.CategoryID,
+                        name: "FK_ProductCategory_Product_CategoryId",
+                        column: x => x.CategoryId,
                         principalTable: "Product",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -436,23 +436,23 @@ namespace eCommercebackend.Migrations
                 name: "ProductCountry",
                 columns: table => new
                 {
-                    ProductID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CountryID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductCountry", x => new { x.ProductID, x.CountryID });
+                    table.PrimaryKey("PK_ProductCountry", x => new { x.ProductId, x.CountryId });
                     table.ForeignKey(
-                        name: "FK_ProductCountry_Country_ProductID",
-                        column: x => x.ProductID,
+                        name: "FK_ProductCountry_Country_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Country",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductCountry_Product_CountryID",
-                        column: x => x.CountryID,
+                        name: "FK_ProductCountry_Product_CountryId",
+                        column: x => x.CountryId,
                         principalTable: "Product",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -460,30 +460,30 @@ namespace eCommercebackend.Migrations
                 name: "ProductStore",
                 columns: table => new
                 {
-                    ProductID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    StoreID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CountryID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    StoreId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductStore", x => new { x.ProductID, x.CountryID, x.StoreID });
+                    table.PrimaryKey("PK_ProductStore", x => new { x.ProductId, x.CountryId, x.StoreId });
                     table.ForeignKey(
-                        name: "FK_ProductStore_Country_CountryID",
-                        column: x => x.CountryID,
+                        name: "FK_ProductStore_Country_CountryId",
+                        column: x => x.CountryId,
                         principalTable: "Country",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductStore_Product_StoreID",
-                        column: x => x.StoreID,
+                        name: "FK_ProductStore_Product_StoreId",
+                        column: x => x.StoreId,
                         principalTable: "Product",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductStore_Store_ProductID",
-                        column: x => x.ProductID,
+                        name: "FK_ProductStore_Store_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Store",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -491,30 +491,30 @@ namespace eCommercebackend.Migrations
                 name: "ProductSupplier",
                 columns: table => new
                 {
-                    ProductID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SupplierID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CountryID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SupplierId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    CountryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductSupplier", x => new { x.ProductID, x.CountryID, x.SupplierID });
+                    table.PrimaryKey("PK_ProductSupplier", x => new { x.ProductId, x.CountryId, x.SupplierId });
                     table.ForeignKey(
-                        name: "FK_ProductSupplier_Country_CountryID",
-                        column: x => x.CountryID,
+                        name: "FK_ProductSupplier_Country_CountryId",
+                        column: x => x.CountryId,
                         principalTable: "Country",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductSupplier_Product_SupplierID",
-                        column: x => x.SupplierID,
+                        name: "FK_ProductSupplier_Product_SupplierId",
+                        column: x => x.SupplierId,
                         principalTable: "Product",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductSupplier_Supplier_ProductID",
-                        column: x => x.ProductID,
+                        name: "FK_ProductSupplier_Supplier_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Supplier",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -522,23 +522,23 @@ namespace eCommercebackend.Migrations
                 name: "ProductTag",
                 columns: table => new
                 {
-                    ProductID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TagID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TagId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProductTag", x => new { x.ProductID, x.TagID });
+                    table.PrimaryKey("PK_ProductTag", x => new { x.ProductId, x.TagId });
                     table.ForeignKey(
-                        name: "FK_ProductTag_Product_TagID",
-                        column: x => x.TagID,
+                        name: "FK_ProductTag_Product_TagId",
+                        column: x => x.TagId,
                         principalTable: "Product",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ProductTag_Tag_ProductID",
-                        column: x => x.ProductID,
+                        name: "FK_ProductTag_Tag_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Tag",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -546,20 +546,20 @@ namespace eCommercebackend.Migrations
                 name: "Sku",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ProductID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ProductId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Ml_Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Md_Images = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Sku", x => x.ID);
+                    table.PrimaryKey("PK_Sku", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Sku_Product_ProductID",
-                        column: x => x.ProductID,
+                        name: "FK_Sku_Product_ProductId",
+                        column: x => x.ProductId,
                         principalTable: "Product",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -567,26 +567,26 @@ namespace eCommercebackend.Migrations
                 name: "WarehouseArea",
                 columns: table => new
                 {
-                    WarehouseID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    AreaID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    WarehouseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    AreaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     DeliveryMaxDay = table.Column<int>(type: "int", nullable: false),
                     DeliveryCost = table.Column<decimal>(type: "decimal(18,3)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WarehouseArea", x => new { x.WarehouseID, x.AreaID });
+                    table.PrimaryKey("PK_WarehouseArea", x => new { x.WarehouseId, x.AreaId });
                     table.ForeignKey(
-                        name: "FK_WarehouseArea_Area_WarehouseID",
-                        column: x => x.WarehouseID,
+                        name: "FK_WarehouseArea_Area_WarehouseId",
+                        column: x => x.WarehouseId,
                         principalTable: "Area",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_WarehouseArea_Warehouse_AreaID",
-                        column: x => x.AreaID,
+                        name: "FK_WarehouseArea_Warehouse_AreaId",
+                        column: x => x.AreaId,
                         principalTable: "Warehouse",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -594,15 +594,15 @@ namespace eCommercebackend.Migrations
                 name: "PurchaseReceive",
                 columns: table => new
                 {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    PurchaseID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ReciveByID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PurchaseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ReciveById = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ReceiveById = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     ReceiveAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PurchaseReceive", x => x.ID);
+                    table.PrimaryKey("PK_PurchaseReceive", x => x.Id);
                     table.ForeignKey(
                         name: "FK_PurchaseReceive_AspNetUsers_ReceiveById",
                         column: x => x.ReceiveById,
@@ -610,10 +610,10 @@ namespace eCommercebackend.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_PurchaseReceive_Purchase_PurchaseID",
-                        column: x => x.PurchaseID,
+                        name: "FK_PurchaseReceive_Purchase_PurchaseId",
+                        column: x => x.PurchaseId,
                         principalTable: "Purchase",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -621,24 +621,24 @@ namespace eCommercebackend.Migrations
                 name: "PurchaseItem",
                 columns: table => new
                 {
-                    PurchaseID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SkuID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PurchaseId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SkuId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Qty = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PurchaseItem", x => new { x.SkuID, x.PurchaseID });
+                    table.PrimaryKey("PK_PurchaseItem", x => new { x.SkuId, x.PurchaseId });
                     table.ForeignKey(
-                        name: "FK_PurchaseItem_Purchase_PurchaseID",
-                        column: x => x.PurchaseID,
+                        name: "FK_PurchaseItem_Purchase_PurchaseId",
+                        column: x => x.PurchaseId,
                         principalTable: "Purchase",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PurchaseItem_Sku_SkuID",
-                        column: x => x.SkuID,
+                        name: "FK_PurchaseItem_Sku_SkuId",
+                        column: x => x.SkuId,
                         principalTable: "Sku",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -646,23 +646,23 @@ namespace eCommercebackend.Migrations
                 name: "SkuVariationItem",
                 columns: table => new
                 {
-                    SkuID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    VariationItemID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    SkuId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    VariationItemId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SkuVariationItem", x => new { x.SkuID, x.VariationItemID });
+                    table.PrimaryKey("PK_SkuVariationItem", x => new { x.SkuId, x.VariationItemId });
                     table.ForeignKey(
-                        name: "FK_SkuVariationItem_Sku_VariationItemID",
-                        column: x => x.VariationItemID,
+                        name: "FK_SkuVariationItem_Sku_VariationItemId",
+                        column: x => x.VariationItemId,
                         principalTable: "Sku",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_SkuVariationItem_VariationItem_SkuID",
-                        column: x => x.SkuID,
+                        name: "FK_SkuVariationItem_VariationItem_SkuId",
+                        column: x => x.SkuId,
                         principalTable: "VariationItem",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -670,116 +670,116 @@ namespace eCommercebackend.Migrations
                 name: "PurchaseReceiveItem",
                 columns: table => new
                 {
-                    PurchaseReceiveID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SkuID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PurchaseReceiveId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SkuId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Qty = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PurchaseReceiveItem", x => new { x.SkuID, x.PurchaseReceiveID });
+                    table.PrimaryKey("PK_PurchaseReceiveItem", x => new { x.SkuId, x.PurchaseReceiveId });
                     table.ForeignKey(
-                        name: "FK_PurchaseReceiveItem_PurchaseReceive_PurchaseReceiveID",
-                        column: x => x.PurchaseReceiveID,
+                        name: "FK_PurchaseReceiveItem_PurchaseReceive_PurchaseReceiveId",
+                        column: x => x.PurchaseReceiveId,
                         principalTable: "PurchaseReceive",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PurchaseReceiveItem_Sku_SkuID",
-                        column: x => x.SkuID,
+                        name: "FK_PurchaseReceiveItem_Sku_SkuId",
+                        column: x => x.SkuId,
                         principalTable: "Sku",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Area_CountryID",
+                name: "IX_Area_CountryId",
                 table: "Area",
-                column: "CountryID");
+                column: "CountryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AttributeItem_AttributeID",
+                name: "IX_AttributeItem_AttributeId",
                 table: "AttributeItem",
-                column: "AttributeID");
+                column: "AttributeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Category_ParentID",
+                name: "IX_Category_ParentId",
                 table: "Category",
-                column: "ParentID");
+                column: "ParentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Product_BrandID",
+                name: "IX_Product_BrandId",
                 table: "Product",
-                column: "BrandID");
+                column: "BrandId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductAttributeItem_AttributeItemID",
+                name: "IX_ProductAttributeItem_AttributeItemId",
                 table: "ProductAttributeItem",
-                column: "AttributeItemID");
+                column: "AttributeItemId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductBadge_BadgeID",
+                name: "IX_ProductBadge_BadgeId",
                 table: "ProductBadge",
-                column: "BadgeID");
+                column: "BadgeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductCategory_CategoryID",
+                name: "IX_ProductCategory_CategoryId",
                 table: "ProductCategory",
-                column: "CategoryID");
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductCountry_CountryID",
+                name: "IX_ProductCountry_CountryId",
                 table: "ProductCountry",
-                column: "CountryID");
+                column: "CountryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductStore_CountryID",
+                name: "IX_ProductStore_CountryId",
                 table: "ProductStore",
-                column: "CountryID");
+                column: "CountryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductStore_StoreID",
+                name: "IX_ProductStore_StoreId",
                 table: "ProductStore",
-                column: "StoreID");
+                column: "StoreId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductSupplier_CountryID",
+                name: "IX_ProductSupplier_CountryId",
                 table: "ProductSupplier",
-                column: "CountryID");
+                column: "CountryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductSupplier_SupplierID",
+                name: "IX_ProductSupplier_SupplierId",
                 table: "ProductSupplier",
-                column: "SupplierID");
+                column: "SupplierId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProductTag_TagID",
+                name: "IX_ProductTag_TagId",
                 table: "ProductTag",
-                column: "TagID");
+                column: "TagId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Purchase_ApprovedByID",
+                name: "IX_Purchase_ApprovedById",
                 table: "Purchase",
-                column: "ApprovedByID");
+                column: "ApprovedById");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Purchase_SupplierID",
+                name: "IX_Purchase_SupplierId",
                 table: "Purchase",
-                column: "SupplierID");
+                column: "SupplierId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Purchase_WarehouseID",
+                name: "IX_Purchase_WarehouseId",
                 table: "Purchase",
-                column: "WarehouseID");
+                column: "WarehouseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PurchaseItem_PurchaseID",
+                name: "IX_PurchaseItem_PurchaseId",
                 table: "PurchaseItem",
-                column: "PurchaseID");
+                column: "PurchaseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PurchaseReceive_PurchaseID",
+                name: "IX_PurchaseReceive_PurchaseId",
                 table: "PurchaseReceive",
-                column: "PurchaseID");
+                column: "PurchaseId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PurchaseReceive_ReceiveById",
@@ -787,29 +787,29 @@ namespace eCommercebackend.Migrations
                 column: "ReceiveById");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PurchaseReceiveItem_PurchaseReceiveID",
+                name: "IX_PurchaseReceiveItem_PurchaseReceiveId",
                 table: "PurchaseReceiveItem",
-                column: "PurchaseReceiveID");
+                column: "PurchaseReceiveId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Sku_ProductID",
+                name: "IX_Sku_ProductId",
                 table: "Sku",
-                column: "ProductID");
+                column: "ProductId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SkuVariationItem_VariationItemID",
+                name: "IX_SkuVariationItem_VariationItemId",
                 table: "SkuVariationItem",
-                column: "VariationItemID");
+                column: "VariationItemId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_VariationItem_VariationID",
+                name: "IX_VariationItem_VariationId",
                 table: "VariationItem",
-                column: "VariationID");
+                column: "VariationId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_WarehouseArea_AreaID",
+                name: "IX_WarehouseArea_AreaId",
                 table: "WarehouseArea",
-                column: "AreaID");
+                column: "AreaId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -26,12 +26,12 @@ namespace eCommerce_backend.Models
         public string Ml_Description { get; set; }
         [Required]
         public bool Taxable { get; set; }
-        public Guid SizeGuildID { get; set; }
+        public Guid SizeGuildId { get; set; }
         [Required]
         public bool IsStandardProduct { get; set; }
         public Guid ApprovedBy { get; set; }
         public string Code { get; set; }
-        public Guid BrandID { get; set; }
+        public Guid BrandId { get; set; }
         public virtual Brand Brand { get; set; }
 
 

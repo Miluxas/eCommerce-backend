@@ -16,25 +16,22 @@ namespace eCommerce_backend.Models
         [Required]
         public DateTime Date { get; set; }
         [Required]
-        public int Type { get; set; }
-        [Required]
-        public Guid SupplierID { get; set; }
+        public Guid SupplierId { get; set; }
         public virtual Supplier Supplier { get; set; }
         [Required]
-        public Guid WarehouseID { get; set; }
+        public Guid WarehouseId { get; set; }
         public virtual Warehouse Warehouse { get; set; }
         [Required]
-        public string Status { get; set; }
+        public string Status { get; set; } = PurchaseStatus.Draft;
         [Required]
-        public string InvoiceType { get; set; }
+        public string TransactionType { get; set; } = PurchaseTransactionType.Entry;
+        [Required]
+        public string Type { get; set; } = PurchaseType.Purchase;
 
-        public Guid ApprovedByID { get; set; }
+        public Guid ApprovedById { get; set; }
         public virtual IdentityAuth.ApplicationUser ApprovedBy { get; set; }
         public DateTime ApprovedAt { get; set; }
-        [Required]
-        [Column(TypeName = "decimal(18, 3)")]
-        public decimal TotalPrice { get; set; }
-
+        public decimal TotalPrice { get;  }
 
 
         [InverseProperty("Purchase")]
@@ -42,34 +39,22 @@ namespace eCommerce_backend.Models
         [InverseProperty("Purchase")]
         public virtual IList<PurchaseReceive> PurchaseReceives { get; set; }
     }
-    public class PurchaseItem
+
+    public class PurchaseType
     {
-        public Guid PurchaseID { get; set; }
-        public virtual Purchase Purchase { get; set; }
-        public Guid SkuID { get; set; }
-        public virtual Sku Sku { get; set; }
-        public int Qty { get; set; }
+        public const string Purchase = "Purchase";
+        public const string Consignment = "Consignment";
+        public const string Return = "Return";
     }
-    public class PurchaseReceive
+    public class PurchaseTransactionType
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Required]
-        public Guid ID { get; set; }
-        public Guid PurchaseID { get; set; }
-        public virtual Purchase Purchase { get; set; }
-        public Guid ReciveByID { get; set; }
-        public virtual IdentityAuth.ApplicationUser ReceiveBy { get; set; }
-        public DateTime ReceiveAt { get; set; }
-        [InverseProperty("PurchaseReceive")]
-        public virtual IList<PurchaseReceiveItem> Items { get; set; }
+        public const string Entry = "Entry";
+        public const string Exit = "Exit";
     }
-    public class PurchaseReceiveItem
+    public class PurchaseStatus
     {
-        public Guid PurchaseReceiveID { get; set; }
-        public virtual PurchaseReceive PurchaseReceive { get; set; }
-        public Guid SkuID { get; set; }
-        public virtual Sku Sku { get; set; }
-        public int Qty { get; set; }
+        public const string Draft = "Draft";
+        public const string Pending = "Pending";
+        public const string Approved = "Approved";
     }
 }

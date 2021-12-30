@@ -10,8 +10,8 @@ using eCommerce_backend.Data;
 namespace eCommercebackend.Migrations.ECommerce
 {
     [DbContext(typeof(ECommerceContext))]
-    [Migration("20211124131342_initialmigration3")]
-    partial class initialmigration3
+    [Migration("20211228062622_helpt")]
+    partial class helpt
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -72,6 +72,25 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.HasKey("Id");
 
                     b.ToTable("AspNetUsers");
+
+                    b.ToView("ApplicationUser");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.IdentityAuth.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ApplicationUser");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Area", b =>
@@ -105,7 +124,7 @@ namespace eCommercebackend.Migrations.ECommerce
 
                     b.HasIndex("CreatedById");
 
-                    b.ToTable("Area");
+                    b.ToTable("Areas");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Attribute", b =>
@@ -283,6 +302,85 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.HasIndex("CreatedById");
 
                     b.ToTable("Country");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Models.Order", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<short>("DeleteStatus")
+                        .HasColumnType("smallint");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Obj_ExteraDetail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Pay")
+                        .HasColumnType("decimal(18,3)");
+
+                    b.Property<decimal>("Shipping")
+                        .HasColumnType("decimal(18,3)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("SubTotal")
+                        .HasColumnType("decimal(18,3)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Order");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Models.OrderItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,3)");
+
+                    b.Property<int>("Qty")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("SkuId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("SkuId");
+
+                    b.ToTable("OrderItem");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Product", b =>
@@ -532,6 +630,10 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Property<Guid>("PurchaseId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("Qty")
                         .HasColumnType("int");
 
@@ -575,6 +677,10 @@ namespace eCommercebackend.Migrations.ECommerce
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("PurchaseReceiveId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Qty")
@@ -661,6 +767,8 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedById");
+
+                    b.HasIndex("SetterId");
 
                     b.ToTable("StatusHistory");
                 });
@@ -874,7 +982,7 @@ namespace eCommercebackend.Migrations.ECommerce
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -887,7 +995,7 @@ namespace eCommercebackend.Migrations.ECommerce
 
             modelBuilder.Entity("eCommerce_backend.Models.Attribute", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -909,7 +1017,7 @@ namespace eCommercebackend.Migrations.ECommerce
 
             modelBuilder.Entity("eCommerce_backend.Models.Badge", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -920,7 +1028,7 @@ namespace eCommercebackend.Migrations.ECommerce
 
             modelBuilder.Entity("eCommerce_backend.Models.Brand", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -931,7 +1039,7 @@ namespace eCommercebackend.Migrations.ECommerce
 
             modelBuilder.Entity("eCommerce_backend.Models.Category", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -948,13 +1056,51 @@ namespace eCommercebackend.Migrations.ECommerce
 
             modelBuilder.Entity("eCommerce_backend.Models.Country", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("CreatedBy");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Models.Order", b =>
+                {
+                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CreatedBy");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Models.OrderItem", b =>
+                {
+                    b.HasOne("eCommerce_backend.Models.Order", "Order")
+                        .WithMany("Items")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eCommerce_backend.Models.Sku", "Sku")
+                        .WithMany()
+                        .HasForeignKey("SkuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Sku");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Product", b =>
@@ -965,7 +1111,7 @@ namespace eCommercebackend.Migrations.ECommerce
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1133,7 +1279,7 @@ namespace eCommercebackend.Migrations.ECommerce
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1217,13 +1363,11 @@ namespace eCommercebackend.Migrations.ECommerce
 
             modelBuilder.Entity("eCommerce_backend.Models.Sku", b =>
                 {
-                    b.HasOne("eCommerce_backend.Models.Product", "Product")
+                    b.HasOne("eCommerce_backend.Models.Product", null)
                         .WithMany("Skus")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.SkuVariationItem", b =>
@@ -1247,18 +1391,26 @@ namespace eCommercebackend.Migrations.ECommerce
 
             modelBuilder.Entity("eCommerce_backend.Models.StatusHistory", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "Setter")
+                        .WithMany()
+                        .HasForeignKey("SetterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("CreatedBy");
+
+                    b.Navigation("Setter");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Store", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1269,7 +1421,7 @@ namespace eCommercebackend.Migrations.ECommerce
 
             modelBuilder.Entity("eCommerce_backend.Models.Supplier", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1280,7 +1432,7 @@ namespace eCommercebackend.Migrations.ECommerce
 
             modelBuilder.Entity("eCommerce_backend.Models.Tag", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1291,7 +1443,7 @@ namespace eCommercebackend.Migrations.ECommerce
 
             modelBuilder.Entity("eCommerce_backend.Models.Variation", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1313,7 +1465,7 @@ namespace eCommercebackend.Migrations.ECommerce
 
             modelBuilder.Entity("eCommerce_backend.Models.Warehouse", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "CreatedBy")
+                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1375,6 +1527,11 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("ProductStores");
 
                     b.Navigation("ProductSuppliers");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Models.Order", b =>
+                {
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Product", b =>

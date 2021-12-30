@@ -13,9 +13,9 @@ namespace eCommerce_backend.Models
 {
     public class ProductAttributeItem
     {
-        public Guid ProductID { get; set; }
+        public Guid ProductId { get; set; }
         public virtual Product Product { get; set; }
-        public Guid AttributeItemID { get; set; }
+        public Guid AttributeItemId { get; set; }
         public virtual AttributeItem AttributeItem { get; set; }
     }
 }

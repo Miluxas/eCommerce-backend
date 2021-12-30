@@ -16,7 +16,7 @@ namespace eCommerce_backend.Controllers
     [ApiController]
     public class CountryController : Base.BaseController<Country>
     {
-        public CountryController(ECommerceContext context,Guid? userID=null) : base(userID)
+        public CountryController(ECommerceContext context,Guid? userId=null) : base(userId)
         {
             service = new Services.CountryService(context.Countries,context);
         }

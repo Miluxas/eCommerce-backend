@@ -17,8 +17,8 @@ namespace eCommerce_backend.Services
         {
             var query = _context.Variations.Join(
                     _context.VariationItems,
-                    variation => variation.ID,
-                    item => item.VariationID,
+                    variation => variation.Id,
+                    item => item.VariationId,
                     (Variation, item) => item
                 ).ToList();
             var attri = await base.Detail(id);

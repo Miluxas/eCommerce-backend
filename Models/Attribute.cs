@@ -16,8 +16,8 @@ namespace eCommerce_backend.Models
     {
         [Required]
         public string Ml_Name { get; set; }
-        
-        public virtual IList<AttributeItem> Items { get; set; }
+
+        public virtual IList<AttributeItem> Items { get; set; } = new List<AttributeItem>();
         [NotMapped]
         public Dictionary<string, string> Name
         {
@@ -38,10 +38,11 @@ namespace eCommerce_backend.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
         [Required]
-        public Guid AttributeID { get; set; }
-        //public virtual Attribute Attribute { get; set; }
+        public Guid AttributeId { get; set; }
+        [JsonIgnore]
+        public virtual Attribute Attribute { get; set; }
         public string Ml_Name { get; set; }
         public virtual IList<ProductAttributeItem> ProductAttributeItems { get; set; }
 

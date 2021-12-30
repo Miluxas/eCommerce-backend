@@ -9,7 +9,7 @@ namespace eCommerce_backend.Controllers
     [ApiController]
     public class AreaController : Base.BaseController<Area>
     {
-        public AreaController(ECommerceContext context,Guid? userID=null) : base(userID)
+        public AreaController(ECommerceContext context,Guid? userId=null) : base(userId)
         {
             service = new Services.AreaService(context.Areas, context);
         }

@@ -13,6 +13,9 @@ using eCommerce_backend.Data;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Http;
 using System;
+using Microsoft.AspNetCore.Mvc.Formatters;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace eCommerce_backend
 {
@@ -58,7 +61,19 @@ namespace eCommerce_backend
             .AddEntityFrameworkStores<IdentityContext>()
             .AddDefaultTokenProviders();
             services.AddCors();
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson();
+            /*AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+            });
+            options =>
+            {
+                options.OutputFormatters.RemoveType<SystemTextJsonOutputFormatter>();
+                options.OutputFormatters.Add(new SystemTextJsonOutputFormatter(new JsonSerializerOptions(JsonSerializerDefaults.Web)
+                {
+                    ReferenceHandler = ReferenceHandler.Preserve,
+                }));
+            });*/
 
         }
 

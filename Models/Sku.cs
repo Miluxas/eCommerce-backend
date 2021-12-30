@@ -16,10 +16,10 @@ namespace eCommerce_backend.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
-        public Guid ID { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
-        public Guid ProductID { get; set; }
+        public Guid ProductId { get; set; }
         [Required]
         public string Ml_Name { get; set; }
         public string Value { get; set; }

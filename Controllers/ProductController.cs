@@ -19,7 +19,7 @@ namespace eCommerce_backend.Controllers
     [ApiController]
     public class ProductController : Base.BaseController<Product>
     {
-        public ProductController(ECommerceContext context,Guid? userID=null) : base(userID)
+        public ProductController(ECommerceContext context,Guid? userId=null) : base(userId)
         {
             service = new Services.ProductService(context.Products,context);
         }
@@ -28,19 +28,19 @@ namespace eCommerce_backend.Controllers
         //[Route("Create")]
         //override public async Task<Product> Create(Product detail)
         //{
-        //    var userID = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+        //    var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
         //    var list = new Task<Product>[1000000];
         //    for (int i = 0; i < 1000000; i++)
         //    {
-        //        detail.ID = Guid.NewGuid();
+        //        detail.Id = Guid.NewGuid();
         //        var name = new Dictionary<string, string>();
         //            name.Add( "en", " created by seeder   " + i.ToString() );
         //        detail.Name = name;
 
-        //        await service.Create(detail, userID);
+        //        await service.Create(detail, userId);
         //    }
         //    //await Task.WhenAll(list);
-        //    return await service.Create(detail, userID);
+        //    return await service.Create(detail, userId);
         //}
     }
 }

@@ -11,19 +11,19 @@ using Newtonsoft.Json;
 
 namespace eCommerce_backend.Models
 {
-    public class OrderItem
+   
+    public class PurchaseReceive
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
         public Guid Id { get; set; }
-        public Guid OrderId { get; set; }
-        public virtual Order Order { get; set; }
-        public Guid SkuId { get; set; }
-        public virtual Sku Sku { get; set; }
-        public int Qty { get; set; }
-        [Required]
-        [Column(TypeName = "decimal(18, 3)")]
-        public decimal Price { get; set; }
+        public Guid PurchaseId { get; set; }
+        public virtual Purchase Purchase { get; set; }
+        public Guid ReciveById { get; set; }
+        public virtual IdentityAuth.ApplicationUser ReceiveBy { get; set; }
+        public DateTime ReceiveAt { get; set; }
+        [InverseProperty("PurchaseReceive")]
+        public virtual IList<PurchaseReceiveItem> Items { get; set; }
     }
 }

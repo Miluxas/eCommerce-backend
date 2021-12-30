@@ -76,17 +76,17 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.Area", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CountryID")
+                    b.Property<Guid>("CountryId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("CreatedByID")
+                    b.Property<Guid>("CreatedById")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
@@ -99,23 +99,23 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("CountryID");
+                    b.HasIndex("CountryId");
 
                     b.ToTable("Area");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Attribute", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("CreatedByID")
+                    b.Property<Guid>("CreatedById")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
@@ -128,40 +128,40 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Attribute");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.AttributeItem", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AttributeID")
+                    b.Property<Guid>("AttributeId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Ml_Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("AttributeID");
+                    b.HasIndex("AttributeId");
 
                     b.ToTable("AttributeItem");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Badge", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("CreatedByID")
+                    b.Property<Guid>("CreatedById")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
@@ -174,21 +174,21 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Badge");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Brand", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("CreatedByID")
+                    b.Property<Guid>("CreatedById")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
@@ -205,21 +205,21 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Brand");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Category", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("CreatedByID")
+                    b.Property<Guid>("CreatedById")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
@@ -236,26 +236,26 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("ParentID")
+                    b.Property<Guid?>("ParentId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ParentID");
+                    b.HasIndex("ParentId");
 
                     b.ToTable("Category");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Country", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("CreatedByID")
+                    b.Property<Guid>("CreatedById")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
@@ -268,21 +268,21 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Country");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Product", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("ApprovedBy")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("BrandID")
+                    b.Property<Guid>("BrandId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Code")
@@ -291,7 +291,7 @@ namespace eCommercebackend.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("CreatedByID")
+                    b.Property<Guid>("CreatedById")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
@@ -319,7 +319,7 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("SizeGuildID")
+                    b.Property<Guid>("SizeGuildId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Taxable")
@@ -328,144 +328,144 @@ namespace eCommercebackend.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("BrandID");
+                    b.HasIndex("BrandId");
 
                     b.ToTable("Product");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.ProductAttributeItem", b =>
                 {
-                    b.Property<Guid>("ProductID")
+                    b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AttributeItemID")
+                    b.Property<Guid>("AttributeItemId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("ProductID", "AttributeItemID");
+                    b.HasKey("ProductId", "AttributeItemId");
 
-                    b.HasIndex("AttributeItemID");
+                    b.HasIndex("AttributeItemId");
 
                     b.ToTable("ProductAttributeItem");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.ProductBadge", b =>
                 {
-                    b.Property<Guid>("ProductID")
+                    b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("BadgeID")
+                    b.Property<Guid>("BadgeId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("ProductID", "BadgeID");
+                    b.HasKey("ProductId", "BadgeId");
 
-                    b.HasIndex("BadgeID");
+                    b.HasIndex("BadgeId");
 
                     b.ToTable("ProductBadge");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.ProductCategory", b =>
                 {
-                    b.Property<Guid>("ProductID")
+                    b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CategoryID")
+                    b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("ProductID", "CategoryID");
+                    b.HasKey("ProductId", "CategoryId");
 
-                    b.HasIndex("CategoryID");
+                    b.HasIndex("CategoryId");
 
                     b.ToTable("ProductCategory");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.ProductCountry", b =>
                 {
-                    b.Property<Guid>("ProductID")
+                    b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CountryID")
+                    b.Property<Guid>("CountryId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("ProductID", "CountryID");
+                    b.HasKey("ProductId", "CountryId");
 
-                    b.HasIndex("CountryID");
+                    b.HasIndex("CountryId");
 
                     b.ToTable("ProductCountry");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.ProductStore", b =>
                 {
-                    b.Property<Guid>("ProductID")
+                    b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CountryID")
+                    b.Property<Guid>("CountryId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("StoreID")
+                    b.Property<Guid>("StoreId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("ProductID", "CountryID", "StoreID");
+                    b.HasKey("ProductId", "CountryId", "StoreId");
 
-                    b.HasIndex("CountryID");
+                    b.HasIndex("CountryId");
 
-                    b.HasIndex("StoreID");
+                    b.HasIndex("StoreId");
 
                     b.ToTable("ProductStore");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.ProductSupplier", b =>
                 {
-                    b.Property<Guid>("ProductID")
+                    b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("CountryID")
+                    b.Property<Guid>("CountryId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("SupplierID")
+                    b.Property<Guid>("SupplierId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("ProductID", "CountryID", "SupplierID");
+                    b.HasKey("ProductId", "CountryId", "SupplierId");
 
-                    b.HasIndex("CountryID");
+                    b.HasIndex("CountryId");
 
-                    b.HasIndex("SupplierID");
+                    b.HasIndex("SupplierId");
 
                     b.ToTable("ProductSupplier");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.ProductTag", b =>
                 {
-                    b.Property<Guid>("ProductID")
+                    b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("TagID")
+                    b.Property<Guid>("TagId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("ProductID", "TagID");
+                    b.HasKey("ProductId", "TagId");
 
-                    b.HasIndex("TagID");
+                    b.HasIndex("TagId");
 
                     b.ToTable("ProductTag");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Purchase", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("ApprovedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("ApprovedByID")
+                    b.Property<Guid>("ApprovedById")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("CreatedByID")
+                    b.Property<Guid>("CreatedById")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Date")
@@ -485,7 +485,7 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("SupplierID")
+                    b.Property<Guid>("SupplierId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("TotalPrice")
@@ -494,45 +494,45 @@ namespace eCommercebackend.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("WarehouseID")
+                    b.Property<Guid>("WarehouseId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ApprovedByID");
+                    b.HasIndex("ApprovedById");
 
-                    b.HasIndex("SupplierID");
+                    b.HasIndex("SupplierId");
 
-                    b.HasIndex("WarehouseID");
+                    b.HasIndex("WarehouseId");
 
                     b.ToTable("Purchase");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.PurchaseItem", b =>
                 {
-                    b.Property<Guid>("SkuID")
+                    b.Property<Guid>("SkuId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("PurchaseID")
+                    b.Property<Guid>("PurchaseId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Qty")
                         .HasColumnType("int");
 
-                    b.HasKey("SkuID", "PurchaseID");
+                    b.HasKey("SkuId", "PurchaseId");
 
-                    b.HasIndex("PurchaseID");
+                    b.HasIndex("PurchaseId");
 
                     b.ToTable("PurchaseItem");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.PurchaseReceive", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("PurchaseID")
+                    b.Property<Guid>("PurchaseId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("ReceiveAt")
@@ -541,12 +541,12 @@ namespace eCommercebackend.Migrations
                     b.Property<Guid?>("ReceiveById")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ReciveByID")
+                    b.Property<Guid>("ReciveById")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("PurchaseID");
+                    b.HasIndex("PurchaseId");
 
                     b.HasIndex("ReceiveById");
 
@@ -555,25 +555,25 @@ namespace eCommercebackend.Migrations
 
             modelBuilder.Entity("eCommerce_backend.Models.PurchaseReceiveItem", b =>
                 {
-                    b.Property<Guid>("SkuID")
+                    b.Property<Guid>("SkuId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("PurchaseReceiveID")
+                    b.Property<Guid>("PurchaseReceiveId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Qty")
                         .HasColumnType("int");
 
-                    b.HasKey("SkuID", "PurchaseReceiveID");
+                    b.HasKey("SkuId", "PurchaseReceiveId");
 
-                    b.HasIndex("PurchaseReceiveID");
+                    b.HasIndex("PurchaseReceiveId");
 
                     b.ToTable("PurchaseReceiveItem");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Sku", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -584,44 +584,44 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("ProductID")
+                    b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("ProductID");
+                    b.HasIndex("ProductId");
 
                     b.ToTable("Sku");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.SkuVariationItem", b =>
                 {
-                    b.Property<Guid>("SkuID")
+                    b.Property<Guid>("SkuId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("VariationItemID")
+                    b.Property<Guid>("VariationItemId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("SkuID", "VariationItemID");
+                    b.HasKey("SkuId", "VariationItemId");
 
-                    b.HasIndex("VariationItemID");
+                    b.HasIndex("VariationItemId");
 
                     b.ToTable("SkuVariationItem");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.StatusHistory", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("CreatedByID")
+                    b.Property<Guid>("CreatedById")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
@@ -636,27 +636,27 @@ namespace eCommercebackend.Migrations
                     b.Property<DateTime>("SetAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("SetterID")
+                    b.Property<Guid>("SetterId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("StatusHistory");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Store", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("CreatedByID")
+                    b.Property<Guid>("CreatedById")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
@@ -672,21 +672,21 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Store");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Supplier", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("CreatedByID")
+                    b.Property<Guid>("CreatedById")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
@@ -702,21 +702,21 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Supplier");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Tag", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("CreatedByID")
+                    b.Property<Guid>("CreatedById")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
@@ -729,21 +729,21 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Tag");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Variation", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("CreatedByID")
+                    b.Property<Guid>("CreatedById")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
@@ -759,14 +759,14 @@ namespace eCommercebackend.Migrations
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Variation");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.VariationItem", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -777,26 +777,26 @@ namespace eCommercebackend.Migrations
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("VariationID")
+                    b.Property<Guid>("VariationId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("VariationID");
+                    b.HasIndex("VariationId");
 
                     b.ToTable("VariationItem");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.Warehouse", b =>
                 {
-                    b.Property<Guid>("ID")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid>("CreatedByID")
+                    b.Property<Guid>("CreatedById")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<short>("DeleteStatus")
@@ -809,17 +809,17 @@ namespace eCommercebackend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.ToTable("Warehouse");
                 });
 
             modelBuilder.Entity("eCommerce_backend.Models.WarehouseArea", b =>
                 {
-                    b.Property<Guid>("WarehouseID")
+                    b.Property<Guid>("WarehouseId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AreaID")
+                    b.Property<Guid>("AreaId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("DeliveryCost")
@@ -831,9 +831,9 @@ namespace eCommercebackend.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.HasKey("WarehouseID", "AreaID");
+                    b.HasKey("WarehouseId", "AreaId");
 
-                    b.HasIndex("AreaID");
+                    b.HasIndex("AreaId");
 
                     b.ToTable("WarehouseArea");
                 });
@@ -842,7 +842,7 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.Country", "Country")
                         .WithMany("Areas")
-                        .HasForeignKey("CountryID")
+                        .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -853,7 +853,7 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.Attribute", "Attribute")
                         .WithMany("Items")
-                        .HasForeignKey("AttributeID")
+                        .HasForeignKey("AttributeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -864,7 +864,7 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.Category", "Parent")
                         .WithMany()
-                        .HasForeignKey("ParentID");
+                        .HasForeignKey("ParentId");
 
                     b.Navigation("Parent");
                 });
@@ -873,7 +873,7 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.Brand", "Brand")
                         .WithMany()
-                        .HasForeignKey("BrandID")
+                        .HasForeignKey("BrandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -884,13 +884,13 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.Product", "Product")
                         .WithMany("ProductAttributeItems")
-                        .HasForeignKey("AttributeItemID")
+                        .HasForeignKey("AttributeItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eCommerce_backend.Models.AttributeItem", "AttributeItem")
                         .WithMany("ProductAttributeItems")
-                        .HasForeignKey("ProductID")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -903,13 +903,13 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.Product", "Product")
                         .WithMany("ProductBadges")
-                        .HasForeignKey("BadgeID")
+                        .HasForeignKey("BadgeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eCommerce_backend.Models.Badge", "Badge")
                         .WithMany("ProductBadges")
-                        .HasForeignKey("ProductID")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -922,13 +922,13 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.Product", "Product")
                         .WithMany("ProductCategories")
-                        .HasForeignKey("CategoryID")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eCommerce_backend.Models.Category", "Category")
                         .WithMany("ProductCategories")
-                        .HasForeignKey("ProductID")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -941,13 +941,13 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.Product", "Product")
                         .WithMany("ProductCountries")
-                        .HasForeignKey("CountryID")
+                        .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eCommerce_backend.Models.Country", "Country")
                         .WithMany("ProductCountries")
-                        .HasForeignKey("ProductID")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -960,19 +960,19 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.Country", "Country")
                         .WithMany("ProductStores")
-                        .HasForeignKey("CountryID")
+                        .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eCommerce_backend.Models.Store", "Store")
                         .WithMany("ProductStores")
-                        .HasForeignKey("ProductID")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eCommerce_backend.Models.Product", "Product")
                         .WithMany("ProductStores")
-                        .HasForeignKey("StoreID")
+                        .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -987,19 +987,19 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.Country", "Country")
                         .WithMany("ProductSuppliers")
-                        .HasForeignKey("CountryID")
+                        .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eCommerce_backend.Models.Supplier", "Supplier")
                         .WithMany("ProductSuppliers")
-                        .HasForeignKey("ProductID")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eCommerce_backend.Models.Product", "Product")
                         .WithMany("ProductSuppliers")
-                        .HasForeignKey("SupplierID")
+                        .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1014,13 +1014,13 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.Tag", "Tag")
                         .WithMany("ProductTags")
-                        .HasForeignKey("ProductID")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eCommerce_backend.Models.Product", "Product")
                         .WithMany("ProductTags")
-                        .HasForeignKey("TagID")
+                        .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1033,19 +1033,19 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "ApprovedBy")
                         .WithMany()
-                        .HasForeignKey("ApprovedByID")
+                        .HasForeignKey("ApprovedById")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eCommerce_backend.Models.Supplier", "Supplier")
                         .WithMany()
-                        .HasForeignKey("SupplierID")
+                        .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eCommerce_backend.Models.Warehouse", "Warehouse")
                         .WithMany()
-                        .HasForeignKey("WarehouseID")
+                        .HasForeignKey("WarehouseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1060,13 +1060,13 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.Purchase", "Purchase")
                         .WithMany("Items")
-                        .HasForeignKey("PurchaseID")
+                        .HasForeignKey("PurchaseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eCommerce_backend.Models.Sku", "Sku")
                         .WithMany()
-                        .HasForeignKey("SkuID")
+                        .HasForeignKey("SkuId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1079,7 +1079,7 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.Purchase", "Purchase")
                         .WithMany("PurchaseReceives")
-                        .HasForeignKey("PurchaseID")
+                        .HasForeignKey("PurchaseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1096,13 +1096,13 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.PurchaseReceive", "PurchaseReceive")
                         .WithMany("Items")
-                        .HasForeignKey("PurchaseReceiveID")
+                        .HasForeignKey("PurchaseReceiveId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eCommerce_backend.Models.Sku", "Sku")
                         .WithMany()
-                        .HasForeignKey("SkuID")
+                        .HasForeignKey("SkuId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1115,7 +1115,7 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.Product", "Product")
                         .WithMany("Skus")
-                        .HasForeignKey("ProductID")
+                        .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1126,13 +1126,13 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.VariationItem", "VariationItem")
                         .WithMany("SkuVariationItems")
-                        .HasForeignKey("SkuID")
+                        .HasForeignKey("SkuId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eCommerce_backend.Models.Sku", "Sku")
                         .WithMany("SkuVariationItems")
-                        .HasForeignKey("VariationItemID")
+                        .HasForeignKey("VariationItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1145,7 +1145,7 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.Variation", "Variation")
                         .WithMany("Items")
-                        .HasForeignKey("VariationID")
+                        .HasForeignKey("VariationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1156,13 +1156,13 @@ namespace eCommercebackend.Migrations
                 {
                     b.HasOne("eCommerce_backend.Models.Warehouse", "Warehouse")
                         .WithMany("WarehouseAreas")
-                        .HasForeignKey("AreaID")
+                        .HasForeignKey("AreaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("eCommerce_backend.Models.Area", "Area")
                         .WithMany("WarehouseAreas")
-                        .HasForeignKey("WarehouseID")
+                        .HasForeignKey("WarehouseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

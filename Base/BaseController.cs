@@ -13,10 +13,10 @@ namespace eCommerce_backend.Base
     [ApiController]
     public partial class BaseController<T> : ControllerBase where T : BaseModel
     {
-        Guid? _userID;
-        public BaseController(Guid? userID = null)
+        protected Guid? _userId;
+        public BaseController(Guid? userId = null)
         {
-            _userID = userID;
+            _userId = userId;
         }
         protected BaseService<T> service;
 
@@ -42,18 +42,18 @@ namespace eCommerce_backend.Base
         [Route("Create")]
         virtual public async Task<T> Create(T detail)
         {
-            if (!_userID.HasValue)
-                _userID = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            return await service.Create(detail, _userID.Value);
+            if (!_userId.HasValue)
+                _userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            return await service.Create(detail, _userId.Value);
         }
 
         [HttpPost]
         [Route("Update")]
         public async Task<T> Update(T detail)
         {
-            if (!_userID.HasValue)
-                _userID = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-            return await service.Update(detail, _userID.Value);
+            if (!_userId.HasValue)
+                _userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            return await service.Update(detail, _userId.Value);
         }
 
         [HttpDelete]

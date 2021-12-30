@@ -25,28 +25,28 @@ namespace eCommerce_backend.Base
         }
         virtual public async Task<T> Detail(Guid id)
         {
-            return await _ts.AsSingleQuery<T>().FirstAsync<T>(e => e.ID == id);
+            return await _ts.AsSingleQuery<T>().FirstAsync<T>(e => e.Id == id);
         }
-        virtual public async Task<T> Create(T entity,Guid userID)
+        virtual public async Task<T> Create(T entity,Guid userId)
         {
             entity.CreatedAt = DateTime.UtcNow;
-            entity.CreatedByID = userID;
+            entity.CreatedById = userId;
             await _ts.AddAsync(entity);
             await _context.SaveChangesAsync();
-            return await _ts.AsSingleQuery<T>().FirstAsync<T>(e => e.ID == entity.ID);
+            return await _ts.AsSingleQuery<T>().FirstAsync<T>(e => e.Id == entity.Id);
         }
-        public async Task<T> Update(T entity, Guid userID)
+        public async Task<T> Update(T entity, Guid userId)
         {
             _ts.Update(entity);
             _context.SaveChanges();
-            return await _ts.AsSingleQuery<T>().FirstAsync<T>(e => e.ID == entity.ID);
+            return await _ts.AsSingleQuery<T>().FirstAsync<T>(e => e.Id == entity.Id);
         }
         public async Task<Boolean> Delete(Guid id)
         {
-            var model=await _ts.AsSingleQuery<T>().FirstAsync<T>(e => e.ID == id);
+            var model=await _ts.AsSingleQuery<T>().FirstAsync<T>(e => e.Id == id);
             if (model != null)
             {
-                model.DeleteStatus = 1;
+                model.DeleteStatus = DeleteStatus.Trash;
                 await _context.SaveChangesAsync();
                 return true;
             }

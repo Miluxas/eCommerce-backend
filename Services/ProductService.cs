@@ -15,10 +15,10 @@ namespace eCommerce_backend.Services
         public ProductService(DbSet<Product> ts, ECommerceContext context) : base(ts, context)
         {
         }
-        //override public async Task<Product> Create(Product entity, Guid userID)
+        //override public async Task<Product> Create(Product entity, Guid userId)
         //{
         //    entity.CreatedAt = DateTime.UtcNow;
-        //    entity.CreatedByID = userID;
+        //    entity.CreatedById = userId;
 
         //    var list = new List<ValueTask<EntityEntry<Product>>>();
         //    for (int i = 0; i < 5000; i++)
@@ -27,10 +27,10 @@ namespace eCommerce_backend.Services
         //        var nEn = new Product()  entity ;
         //        entity.Name["en"] = entity.Name["en"]+ "    " + i.ToString();
         //        _ts.Add(entity);
-        //        entity.ID = Guid.NewGuid();
+        //        entity.Id = Guid.NewGuid();
         //    }
         //    await _context.SaveChangesAsync();
-        //    return await _ts.AsSingleQuery<Product>().FirstAsync<Product>(e => e.ID == entity.ID);
+        //    return await _ts.AsSingleQuery<Product>().FirstAsync<Product>(e => e.Id == entity.Id);
         //}
     }
 }

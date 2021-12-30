@@ -20,7 +20,7 @@ namespace eCommerce_backend.Models
         [Required]
         public string Status { get; set; }
 
-        public Guid UserID { get; set; }
+        public Guid UserId { get; set; }
         public virtual IdentityAuth.ApplicationUser User { get; set; }
         [Required]
         [Column(TypeName = "decimal(18, 3)")]

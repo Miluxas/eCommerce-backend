@@ -12,9 +12,9 @@ namespace eCommerce_backend.Base
     {
         public Media()
         {
-            this.GuID = Guid.NewGuid();
+            this.GuId = Guid.NewGuid();
         }
-        public Guid GuID { get; set; }
+        public Guid GuId { get; set; }
         public string Url { get; set; }
         public string name { get; set; }
         public string Type { get; set; }

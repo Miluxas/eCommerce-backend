@@ -14,9 +14,9 @@ namespace eCommerce_backend.Models
     public class WarehouseArea
     {
        
-        public Guid WarehouseID { get; set; }
+        public Guid WarehouseId { get; set; }
         public virtual Warehouse Warehouse { get; set; }
-        public Guid AreaID { get; set; }
+        public Guid AreaId { get; set; }
         public virtual Area Area { get; set; }
         public bool IsActive { get; set; }
         public int DeliveryMaxDay { get; set; }
