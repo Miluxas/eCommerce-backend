@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace eCommerce_backend.Models
+namespace eCommerce_backend.Data.Models
 {
     public class PurchaseItem
     {

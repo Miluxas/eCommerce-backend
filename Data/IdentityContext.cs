@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using eCommerce_backend.Models;
+using eCommerce_backend.Data.Models;
 using eCommerce_backend.Base;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using eCommerce_backend.IdentityAuth;

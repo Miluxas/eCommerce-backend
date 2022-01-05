@@ -6,17 +6,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 using eCommerce_backend.Base;
+using eCommerce_backend.IdentityAuth;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
-namespace eCommerce_backend.Models
+namespace eCommerce_backend.Data.Models
 {
-    public class Store : BaseModel
+    public class Brand : BaseModel
     {
         [Required]
         public string Ml_Name { get; set; }
+        [Required]
         public string Md_Image { get; set; }
-        public virtual IList<ProductStore> ProductStores { get; set; }
 
         [NotMapped]
 
@@ -38,6 +39,7 @@ namespace eCommerce_backend.Models
             }
         }
         [NotMapped]
+        [Required]
         public Dictionary<string, string> Name
         {
             get

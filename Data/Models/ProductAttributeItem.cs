@@ -9,14 +9,13 @@ using eCommerce_backend.Base;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
-namespace eCommerce_backend.Models
+namespace eCommerce_backend.Data.Models
 {
-    public class ProductBadge
+    public class ProductAttributeItem
     {
         public Guid ProductId { get; set; }
         public virtual Product Product { get; set; }
-
-        public Guid BadgeId { get; set; }
-        public virtual Badge Badge { get; set; }
+        public Guid AttributeItemId { get; set; }
+        public virtual AttributeItem AttributeItem { get; set; }
     }
 }

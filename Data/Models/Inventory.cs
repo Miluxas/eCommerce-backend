@@ -9,7 +9,7 @@ using eCommerce_backend.Base;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
-namespace eCommerce_backend.Models
+namespace eCommerce_backend.Data.Models
 {
     public class Inventory : BaseModel
     {

@@ -1,5 +1,5 @@
 ﻿using eCommerce_backend.Base;
-using eCommerce_backend.Models;
+using eCommerce_backend.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace eCommerce_backend.Data

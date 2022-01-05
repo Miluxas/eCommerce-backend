@@ -9,14 +9,14 @@ using eCommerce_backend.Base;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
-namespace eCommerce_backend.Models
+namespace eCommerce_backend.Data.Models
 {
-    public class ProductCountry
+    public class SkuVariationItem
     {
+        public Guid SkuId { get; set; }
+        public virtual Sku Sku { get; set; }
+        public Guid VariationItemId { get; set; }
+        public virtual VariationItem VariationItem { get; set; }
 
-        public Guid ProductId { get; set; }
-        public virtual Product Product { get; set; }
-        public Guid CountryId { get; set; }
-        public virtual Country Country { get; set; }
     }
 }

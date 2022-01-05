@@ -9,14 +9,14 @@ using eCommerce_backend.Base;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
-namespace eCommerce_backend.Models
+namespace eCommerce_backend.Data.Models
 {
-    public class Badge : BaseModel
+    public class Warehouse : BaseModel
     {
-
         [Required]
         public string Ml_Name { get; set; }
-        public virtual IList<ProductBadge> ProductBadges { get; set; }
+        public virtual IList<WarehouseArea> WarehouseAreas { get; set; }
+
 
         [NotMapped]
         public Dictionary<string, string> Name

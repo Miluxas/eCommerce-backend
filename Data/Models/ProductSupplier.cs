@@ -9,14 +9,14 @@ using eCommerce_backend.Base;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
-namespace eCommerce_backend.Models
+namespace eCommerce_backend.Data.Models
 {
-    public class ProductStore
+    public class ProductSupplier
     {
         public Guid ProductId { get; set; }
         public virtual Product Product { get; set; }
-        public Guid StoreId { get; set; }
-        public virtual Store Store { get; set; }
+        public Guid SupplierId { get; set; }
+        public virtual Supplier Supplier { get; set; }
         public Guid CountryId { get; set; }
         public virtual Country Country { get; set; }
     }

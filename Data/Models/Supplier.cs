@@ -9,18 +9,34 @@ using eCommerce_backend.Base;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
-namespace eCommerce_backend.Models
+namespace eCommerce_backend.Data.Models
 {
-    public class Country : BaseModel
+    public class Supplier : BaseModel
     {
         [Required]
         public string Ml_Name { get; set; }
-        public virtual IList<ProductCountry> ProductCountries { get; set; }
-        public virtual IList<ProductStore> ProductStores { get; set; }
+        public string Md_Image { get; set; }
         public virtual IList<ProductSupplier> ProductSuppliers { get; set; }
-        public virtual IList<Area> Areas { get; set; }
 
+        [NotMapped]
 
+        public Media? Image
+        {
+            get
+            {
+                if (Md_Image != null)
+                    return JsonConvert.DeserializeObject<Media>(Md_Image);
+                return null;
+
+            }
+            set
+            {
+                if (value != null)
+                    Md_Image = JsonConvert.SerializeObject(value);
+                else
+                    Md_Image = "";
+            }
+        }
         [NotMapped]
         public Dictionary<string, string> Name
         {

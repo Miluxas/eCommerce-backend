@@ -21,7 +21,7 @@ namespace eCommerce_backend.Base
 
         virtual public async Task<IEnumerable<T>> List(ListBody listBody)
         {
-            return await _ts.Take(listBody.Limit).ToListAsync();
+            return await _ts.Take(listBody.Limit).OrderByDescending(e=>e.CreatedAt).ToListAsync();
         }
         virtual public async Task<T> Detail(Guid id)
         {
