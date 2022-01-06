@@ -17,6 +17,8 @@ namespace eCommerce_backend.Data.Models
         public Guid SkuId { get; set; }
         public virtual Sku Sku { get; set; }
         public int Qty { get; set; }
+        public decimal BuyPrice { get; set; }
+        public decimal SellPrice { get; set; }
     }
 
 }

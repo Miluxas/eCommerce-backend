@@ -1,5 +1,6 @@
 ﻿using eCommerce_backend.Data;
 using eCommerce_backend.Data.Models;
+using eCommerce_backend.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,7 +22,7 @@ namespace eCommerce_backend.Controllers
 
         [HttpPost]
         [Route("RegisterNewPurchase")]
-        virtual public async Task<Purchase> RegisterNewPurchase(Purchase detail)
+        virtual public async Task<Purchase> RegisterNewPurchase(NewPurchase detail)
         {
             if (!base._userId.HasValue)
                 _userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
