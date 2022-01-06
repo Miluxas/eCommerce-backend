@@ -32,6 +32,7 @@ namespace eCommerce_backend.Data
         public DbSet<StatusHistory> StatusHistories { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
+        public DbSet<PurchaseItem> PurchaseItems { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
 
 
@@ -61,6 +62,7 @@ namespace eCommerce_backend.Data
             modelBuilder.Entity<StatusHistory>().ToTable("StatusHistory");
             modelBuilder.Entity<Order>().ToTable("Order");
             modelBuilder.Entity<Purchase>().ToTable("Purchase");
+            modelBuilder.Entity<PurchaseItem>().ToTable("PurchaseItem");
             modelBuilder.Entity<Warehouse>().ToTable("Warehouse");
             modelBuilder.Ignore<Media>();
             modelBuilder.Ignore<ExtraDetail>();

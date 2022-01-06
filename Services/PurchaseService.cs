@@ -22,6 +22,7 @@ namespace eCommerce_backend.Services
             {
                 purchase.Items.Add(new PurchaseItem
                 {
+                    Id=new Guid(),
                     Qty = item.Qty,
                     SkuId = item.SkuId,
                     SellPrice = item.SellPrice,

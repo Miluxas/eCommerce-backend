@@ -35,9 +35,9 @@ namespace eCommerce_backend.Data.Models
 
 
         [InverseProperty("Purchase")]
-        public virtual IList<PurchaseItem> Items { get; set; }
+        public virtual IList<PurchaseItem> Items { get; set; } = new List<PurchaseItem>();
         [InverseProperty("Purchase")]
-        public virtual IList<PurchaseReceive> PurchaseReceives { get; set; }
+        public virtual IList<PurchaseReceive> PurchaseReceives { get; set; }=new List<PurchaseReceive>();
     }
 
     public class PurchaseType
