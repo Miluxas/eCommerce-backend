@@ -9,11 +9,11 @@ namespace eCommerce_backend.Controllers
     [Authorize]
     [Route("[controller]")]
     [ApiController]
-    public class BrandController : Base.BaseController<Brand>
+    public class WarehouseController : Base.BaseController<Warehouse>
     {
-        public BrandController(ECommerceContext context, Guid? userId = null) : base(userId)
+        public WarehouseController(ECommerceContext context, Guid? userId = null) : base(userId)
         {
-            service = new Services.BrandService(context.Brands, context);
+            service = new Services.WarehouseService(context.Warehouses, context);
         }
     }
 }

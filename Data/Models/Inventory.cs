@@ -18,12 +18,11 @@ namespace eCommerce_backend.Data.Models
         public virtual Sku Sku { get; set; }
         public Guid PurchaseId { get; set; }
         public virtual Purchase Purchase { get; set; }
-        public Guid OrderId { get; set; }
+        public  Nullable<Guid> OrderId { get; set; }
         public virtual Order Order { get; set; }
 
         [Required]
-        public string Status { get; set; }
-
+        public string Status { get; set; } = InventoryStatus.Published;
         public Guid WarehouseId { get; set; }
         public virtual Warehouse Warehouse { get; set; }
         [Column(TypeName = "decimal(18, 3)")]
@@ -31,5 +30,11 @@ namespace eCommerce_backend.Data.Models
         [Column(TypeName = "decimal(18, 3)")]
         public decimal SellPrice { get; set; }
 
+    }
+    public class InventoryStatus
+    {
+        public const string Published = "Published";
+        public const string Sold = "Sold";
+        public const string Stock = "Stock";
     }
 }

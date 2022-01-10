@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-
+using Newtonsoft.Json.Linq;
 
 namespace eCommerce_backend.Base
 {
@@ -21,6 +21,9 @@ namespace eCommerce_backend.Base
 
         virtual public async Task<IEnumerable<T>> List(ListBody listBody)
         {
+            if(listBody.Filter != null)
+                return await _ts.FromSqlRaw("select * from Product where "+listBody.Filter).Take(listBody.Limit).OrderByDescending(e => e.CreatedAt).ToListAsync();
+
             return await _ts.Take(listBody.Limit).OrderByDescending(e=>e.CreatedAt).ToListAsync();
         }
         virtual public async Task<T> Detail(Guid id)

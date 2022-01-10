@@ -1,5 +1,6 @@
 ﻿using eCommerce_backend.Base;
 using eCommerce_backend.Data.Models;
+using eCommerce_backend.IdentityAuth;
 using Microsoft.EntityFrameworkCore;
 
 namespace eCommerce_backend.Data
@@ -33,12 +34,13 @@ namespace eCommerce_backend.Data
         public DbSet<Order> Orders { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
         public DbSet<PurchaseItem> PurchaseItems { get; set; }
+        public DbSet<PurchaseReceive> PurchaseReceives { get; set; }
+        public DbSet<Inventory> Inventories { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<IdentityAuth.ApplicationUser>().ToView("ApplicationUser");
             modelBuilder.Entity<Brand>().ToTable("Brand");
             modelBuilder.Entity<Badge>().ToTable("Badge");
             modelBuilder.Entity<Category>().ToTable("Category");
@@ -63,9 +65,12 @@ namespace eCommerce_backend.Data
             modelBuilder.Entity<Order>().ToTable("Order");
             modelBuilder.Entity<Purchase>().ToTable("Purchase");
             modelBuilder.Entity<PurchaseItem>().ToTable("PurchaseItem");
+            modelBuilder.Entity<PurchaseReceive>().ToTable("PurchaseReceive");
+            modelBuilder.Entity<Inventory>().ToTable("Inventory");
             modelBuilder.Entity<Warehouse>().ToTable("Warehouse");
             modelBuilder.Ignore<Media>();
             modelBuilder.Ignore<ExtraDetail>();
+            modelBuilder.Ignore<User>();
 
             modelBuilder.Entity<ProductAttributeItem>().HasKey(pAi => new { pAi.ProductId, pAi.AttributeItemId });
             modelBuilder.Entity<ProductAttributeItem>()

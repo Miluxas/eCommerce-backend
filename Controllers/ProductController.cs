@@ -29,12 +29,12 @@ namespace eCommerce_backend.Controllers
         //override public async Task<Product> Create(Product detail)
         //{
         //    var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-        //    var list = new Task<Product>[1000000];
-        //    for (int i = 0; i < 1000000; i++)
+        //    //var list = new Task<Product>[10000000];
+        //    for (int i = 0; i < 10000000; i++)
         //    {
         //        detail.Id = Guid.NewGuid();
         //        var name = new Dictionary<string, string>();
-        //            name.Add( "en", " created by seeder   " + i.ToString() );
+        //        name.Add("en", " created by seeder   " + i.ToString());
         //        detail.Name = name;
 
         //        await service.Create(detail, userId);

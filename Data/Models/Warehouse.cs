@@ -23,6 +23,8 @@ namespace eCommerce_backend.Data.Models
         {
             get
             {
+                if (Ml_Name == null)
+                    return null;
                 return JsonConvert.DeserializeObject<Dictionary<string,string>>(Ml_Name);
             }
             set 

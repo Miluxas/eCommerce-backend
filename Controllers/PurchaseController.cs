@@ -22,12 +22,21 @@ namespace eCommerce_backend.Controllers
 
         [HttpPost]
         [Route("RegisterNewPurchase")]
-        virtual public async Task<Purchase> RegisterNewPurchase(NewPurchase detail)
+        virtual public async Task<Purchase> RegisterNewPurchase(NewPurchaseModel detail)
         {
             if (!base._userId.HasValue)
                 _userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
 
             return await _service.RegisterNewPurchase(detail, _userId.Value);
+        }
+        [HttpPost]
+        [Route("RegisterNewPurchaseReceive")]
+        virtual public async Task<PurchaseReceive> RegisterNewPurchaseReceive(PurchaseReceiveModel detail)
+        {
+            if (!base._userId.HasValue)
+                _userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+            return await _service.RegisterNewPurchaseReceive(detail, _userId.Value);
         }
     }
 }

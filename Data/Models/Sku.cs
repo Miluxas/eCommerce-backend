@@ -20,6 +20,8 @@ namespace eCommerce_backend.Data.Models
 
         [Required]
         public Guid ProductId { get; set; }
+        [JsonIgnore]
+        public virtual Product Product { get; set; }
         [Required]
         public string Ml_Name { get; set; }
         public string Value { get; set; }
@@ -50,7 +52,9 @@ namespace eCommerce_backend.Data.Models
         {
             get
             {
+                if(Ml_Name!=null)
                 return JsonConvert.DeserializeObject<Dictionary<string, string>>(Ml_Name);
+                return null;
             }
             set
             {

@@ -10,14 +10,23 @@ namespace eCommerce_backend.Data.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
+        [Required]
         public Guid PurchaseId { get; set; }
         [JsonIgnore]
         public virtual Purchase Purchase { get; set; }
+        [Required]
         public Guid SkuId { get; set; }
         public virtual Sku Sku { get; set; }
+        [Required]
         public int Qty { get; set; }
+        [Required]
+        [DataType(DataType.Currency)]
+        [Column(TypeName = "decimal(18, 5)")]
         public decimal BuyPrice { get; set; }
+        [Required]
+        [DataType(DataType.Currency)]
+        [Column(TypeName = "decimal(18, 5)")]
         public decimal SellPrice { get; set; }
     }
 

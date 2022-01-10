@@ -44,7 +44,9 @@ namespace eCommerce_backend.Data.Models
         {
             get
             {
-                return JsonConvert.DeserializeObject<Dictionary<string,string>>(Ml_Name);
+                if (Ml_Name != null)
+                    return JsonConvert.DeserializeObject<Dictionary<string, string>>(Ml_Name);
+                return null;
             }
             set 
             {

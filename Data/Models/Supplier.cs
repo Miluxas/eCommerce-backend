@@ -37,12 +37,15 @@ namespace eCommerce_backend.Data.Models
                     Md_Image = "";
             }
         }
+        [Required]
         [NotMapped]
         public Dictionary<string, string> Name
         {
             get
             {
+                if(Ml_Name!=null)
                 return JsonConvert.DeserializeObject<Dictionary<string,string>>(Ml_Name);
+                return null;
             }
             set 
             {

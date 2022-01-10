@@ -23,7 +23,6 @@ namespace eCommerce_backend.Base
         [HttpPost]
         public async Task<IEnumerable<T>> Index(ListBody listBody)
         {
-
             return await service.List(listBody);
         }
 

@@ -40,14 +40,16 @@ namespace eCommerce_backend.Data.Models
         {
             get
             {
+                if(Ml_Name!=null)
                 return JsonConvert.DeserializeObject<Dictionary<string, string>>(Ml_Name);
+                return null;
             }
             set
             {
                 Ml_Name = JsonConvert.SerializeObject(value);
             }
         }
-        public virtual IList<Sku> Skus { get; set; }
+        public virtual IList<Sku> Skus { get; set; }=new List<Sku>();
         public virtual IList<ProductAttributeItem> ProductAttributeItems { get; set; }
         public virtual IList<ProductBadge> ProductBadges { get; set; }
         public virtual IList<ProductCategory> ProductCategories { get; set; }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace eCommerce_backend.Data.Models
-{
+{ 
    
     public class PurchaseReceive
     {
@@ -19,11 +19,15 @@ namespace eCommerce_backend.Data.Models
         [Required]
         public Guid Id { get; set; }
         public Guid PurchaseId { get; set; }
+        [JsonIgnore]
         public virtual Purchase Purchase { get; set; }
+        [Required]
+        public Guid WarehouseId { get; set; }
+        public virtual Warehouse Warehouse { get; set; }
         public Guid ReciveById { get; set; }
         public virtual IdentityAuth.ApplicationUser ReceiveBy { get; set; }
         public DateTime ReceiveAt { get; set; }
         [InverseProperty("PurchaseReceive")]
-        public virtual IList<PurchaseReceiveItem> Items { get; set; }
+        public virtual IList<PurchaseReceiveItem> Items { get; set; }=new List<PurchaseReceiveItem>();
     }
 }

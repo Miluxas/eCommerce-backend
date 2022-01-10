@@ -16,8 +16,9 @@ namespace eCommerce_backend.Data.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
-        public Guid Id { get; set; }
+        public Guid Id { get; set; }=Guid.NewGuid();
         public Guid PurchaseReceiveId { get; set; }
+        [JsonIgnore]
         public virtual PurchaseReceive PurchaseReceive { get; set; }
         public Guid SkuId { get; set; }
         public virtual Sku Sku { get; set; }

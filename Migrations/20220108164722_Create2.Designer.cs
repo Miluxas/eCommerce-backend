@@ -3,21 +3,948 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eCommerce_backend.Data;
+
+#nullable disable
 
 namespace eCommercebackend.Migrations.ECommerce
 {
     [DbContext(typeof(ECommerceContext))]
-    partial class ECommerceContextModelSnapshot : ModelSnapshot
+    [Migration("20220108164722_Create2")]
+    partial class Create2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.12")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "6.0.1")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Area", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CountryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DeleteStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Ml_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("Areas");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Attribute", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DeleteStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Ml_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Attribute", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.AttributeItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AttributeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Ml_Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AttributeId");
+
+                    b.ToTable("AttributeItem", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Badge", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DeleteStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Ml_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Badge", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Brand", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DeleteStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Md_Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ml_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Brand", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Category", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DeleteStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Ml_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Mm_Image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("ParentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ParentId");
+
+                    b.ToTable("Category", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Country", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DeleteStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Ml_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Country", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Inventory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("BuyPrice")
+                        .HasColumnType("decimal(18,3)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DeleteStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PurchaseId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("SellPrice")
+                        .HasColumnType("decimal(18,3)");
+
+                    b.Property<Guid>("SkuId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("WarehouseId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("PurchaseId");
+
+                    b.HasIndex("SkuId");
+
+                    b.HasIndex("WarehouseId");
+
+                    b.ToTable("Inventory", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Order", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeleteStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Obj_ExteraDetail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Pay")
+                        .HasColumnType("decimal(18,3)");
+
+                    b.Property<decimal>("Shipping")
+                        .HasColumnType("decimal(18,3)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("SubTotal")
+                        .HasColumnType("decimal(18,3)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Order", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.OrderItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,3)");
+
+                    b.Property<int>("Qty")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("SkuId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OrderId");
+
+                    b.HasIndex("SkuId");
+
+                    b.ToTable("OrderItem");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Product", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ApprovedBy")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("BrandId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DeleteStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("HasCustomText")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HasGiftCard")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("HasWrapping")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsStandardProduct")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Ml_Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ml_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("SizeGuildId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Taxable")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BrandId");
+
+                    b.ToTable("Product", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.ProductAttributeItem", b =>
+                {
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AttributeItemId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ProductId", "AttributeItemId");
+
+                    b.HasIndex("AttributeItemId");
+
+                    b.ToTable("ProductAttributeItem", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.ProductBadge", b =>
+                {
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("BadgeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ProductId", "BadgeId");
+
+                    b.HasIndex("BadgeId");
+
+                    b.ToTable("ProductBadge", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.ProductCategory", b =>
+                {
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ProductId", "CategoryId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("ProductCategory", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.ProductCountry", b =>
+                {
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CountryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ProductId", "CountryId");
+
+                    b.HasIndex("CountryId");
+
+                    b.ToTable("ProductCountry", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.ProductStore", b =>
+                {
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CountryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("StoreId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ProductId", "CountryId", "StoreId");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("StoreId");
+
+                    b.ToTable("ProductStore", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.ProductSupplier", b =>
+                {
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CountryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SupplierId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ProductId", "CountryId", "SupplierId");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("SupplierId");
+
+                    b.ToTable("ProductSupplier", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.ProductTag", b =>
+                {
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("TagId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ProductId", "TagId");
+
+                    b.HasIndex("TagId");
+
+                    b.ToTable("ProductTag", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Purchase", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ApprovedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("ApprovedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DeleteStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("SupplierId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("TransactionType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SupplierId");
+
+                    b.ToTable("Purchase", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.PurchaseItem", b =>
+                {
+                    b.Property<Guid>("SkuId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PurchaseId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("BuyPrice")
+                        .HasColumnType("decimal(18,5)");
+
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Qty")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("SellPrice")
+                        .HasColumnType("decimal(18,5)");
+
+                    b.HasKey("SkuId", "PurchaseId");
+
+                    b.HasIndex("PurchaseId");
+
+                    b.ToTable("PurchaseItem", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.PurchaseReceive", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PurchaseId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("ReceiveAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("ReceiveById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ReciveById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("WarehouseId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PurchaseId");
+
+                    b.HasIndex("ReceiveById");
+
+                    b.HasIndex("WarehouseId");
+
+                    b.ToTable("PurchaseReceive", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.PurchaseReceiveItem", b =>
+                {
+                    b.Property<Guid>("SkuId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("PurchaseReceiveId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Qty")
+                        .HasColumnType("int");
+
+                    b.HasKey("SkuId", "PurchaseReceiveId");
+
+                    b.HasIndex("PurchaseReceiveId");
+
+                    b.ToTable("PurchaseReceiveItem");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Sku", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Md_Images")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ml_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("Sku", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.SkuVariationItem", b =>
+                {
+                    b.Property<Guid>("SkuId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("VariationItemId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("SkuId", "VariationItemId");
+
+                    b.HasIndex("VariationItemId");
+
+                    b.ToTable("SkuVariationItem", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.StatusHistory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DeleteStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EntityName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("SetAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("SetterId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SetterId");
+
+                    b.ToTable("StatusHistory", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Store", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DeleteStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Md_Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ml_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Store", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Supplier", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DeleteStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Md_Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ml_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Supplier", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Tag", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DeleteStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Ml_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tag");
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Variation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DeleteStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Ml_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Variation", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.VariationItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Ml_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("VariationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("VariationId");
+
+                    b.ToTable("VariationItem", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Warehouse", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DeleteStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Ml_Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Warehouse", (string)null);
+                });
+
+            modelBuilder.Entity("eCommerce_backend.Data.Models.WarehouseArea", b =>
+                {
+                    b.Property<Guid>("WarehouseId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("AreaId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("DeliveryCost")
+                        .HasColumnType("decimal(18,3)");
+
+                    b.Property<int>("DeliveryMaxDay")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.HasKey("WarehouseId", "AreaId");
+
+                    b.HasIndex("AreaId");
+
+                    b.ToTable("WarehouseArea");
+                });
 
             modelBuilder.Entity("eCommerce_backend.IdentityAuth.ApplicationUser", b =>
                 {
@@ -70,941 +997,22 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.HasKey("Id");
 
                     b.ToTable("AspNetUsers");
-
-                    b.ToView("ApplicationUser");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.IdentityAuth.User", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Area", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ApplicationUser");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Area", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CountryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<short>("DeleteStatus")
-                        .HasColumnType("smallint");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Ml_Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CountryId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.ToTable("Areas");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Attribute", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<short>("DeleteStatus")
-                        .HasColumnType("smallint");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Ml_Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.ToTable("Attribute");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.AttributeItem", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("AttributeId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Ml_Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AttributeId");
-
-                    b.ToTable("AttributeItem");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Badge", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<short>("DeleteStatus")
-                        .HasColumnType("smallint");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Ml_Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.ToTable("Badge");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Brand", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<short>("DeleteStatus")
-                        .HasColumnType("smallint");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Md_Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Ml_Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.ToTable("Brand");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Category", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<short>("DeleteStatus")
-                        .HasColumnType("smallint");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Ml_Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Mm_Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("ParentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("ParentId");
-
-                    b.ToTable("Category");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Country", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<short>("DeleteStatus")
-                        .HasColumnType("smallint");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Ml_Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.ToTable("Country");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Order", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<short>("DeleteStatus")
-                        .HasColumnType("smallint");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Obj_ExteraDetail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("Pay")
-                        .HasColumnType("decimal(18,3)");
-
-                    b.Property<decimal>("Shipping")
-                        .HasColumnType("decimal(18,3)");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<decimal>("SubTotal")
-                        .HasColumnType("decimal(18,3)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Order");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.OrderItem", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("OrderId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,3)");
-
-                    b.Property<int>("Qty")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("SkuId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("SkuId");
-
-                    b.ToTable("OrderItem");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Product", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ApprovedBy")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("BrandId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Code")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<short>("DeleteStatus")
-                        .HasColumnType("smallint");
-
-                    b.Property<bool>("HasCustomText")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("HasGiftCard")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("HasWrapping")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("IsStandardProduct")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Ml_Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Ml_Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("SizeGuildId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("Taxable")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BrandId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.ToTable("Product");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.ProductAttributeItem", b =>
-                {
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("AttributeItemId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ProductId", "AttributeItemId");
-
-                    b.HasIndex("AttributeItemId");
-
-                    b.ToTable("ProductAttributeItem");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.ProductBadge", b =>
-                {
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("BadgeId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ProductId", "BadgeId");
-
-                    b.HasIndex("BadgeId");
-
-                    b.ToTable("ProductBadge");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.ProductCategory", b =>
-                {
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CategoryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ProductId", "CategoryId");
-
-                    b.HasIndex("CategoryId");
-
-                    b.ToTable("ProductCategory");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.ProductCountry", b =>
-                {
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CountryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ProductId", "CountryId");
-
-                    b.HasIndex("CountryId");
-
-                    b.ToTable("ProductCountry");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.ProductStore", b =>
-                {
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CountryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("StoreId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ProductId", "CountryId", "StoreId");
-
-                    b.HasIndex("CountryId");
-
-                    b.HasIndex("StoreId");
-
-                    b.ToTable("ProductStore");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.ProductSupplier", b =>
-                {
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("CountryId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("SupplierId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ProductId", "CountryId", "SupplierId");
-
-                    b.HasIndex("CountryId");
-
-                    b.HasIndex("SupplierId");
-
-                    b.ToTable("ProductSupplier");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.ProductTag", b =>
-                {
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("TagId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ProductId", "TagId");
-
-                    b.HasIndex("TagId");
-
-                    b.ToTable("ProductTag");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Purchase", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("ApprovedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("ApprovedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<short>("DeleteStatus")
-                        .HasColumnType("smallint");
-
-                    b.Property<string>("InvoiceType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("SupplierId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("TotalPrice")
-                        .HasColumnType("decimal(18,3)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("WarehouseId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApprovedById");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("SupplierId");
-
-                    b.HasIndex("WarehouseId");
-
-                    b.ToTable("Purchase");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.PurchaseItem", b =>
-                {
-                    b.Property<Guid>("SkuId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("PurchaseId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Qty")
-                        .HasColumnType("int");
-
-                    b.HasKey("SkuId", "PurchaseId");
-
-                    b.HasIndex("PurchaseId");
-
-                    b.ToTable("PurchaseItem");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.PurchaseReceive", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("PurchaseId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("ReceiveAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("ReceiveById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ReciveById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PurchaseId");
-
-                    b.HasIndex("ReceiveById");
-
-                    b.ToTable("PurchaseReceive");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.PurchaseReceiveItem", b =>
-                {
-                    b.Property<Guid>("SkuId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("PurchaseReceiveId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Qty")
-                        .HasColumnType("int");
-
-                    b.HasKey("SkuId", "PurchaseReceiveId");
-
-                    b.HasIndex("PurchaseReceiveId");
-
-                    b.ToTable("PurchaseReceiveItem");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Sku", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Md_Images")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Ml_Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Sku");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.SkuVariationItem", b =>
-                {
-                    b.Property<Guid>("SkuId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("VariationItemId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("SkuId", "VariationItemId");
-
-                    b.HasIndex("VariationItemId");
-
-                    b.ToTable("SkuVariationItem");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.StatusHistory", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<short>("DeleteStatus")
-                        .HasColumnType("smallint");
-
-                    b.Property<string>("EntityName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime>("SetAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("SetterId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("SetterId");
-
-                    b.ToTable("StatusHistory");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Store", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<short>("DeleteStatus")
-                        .HasColumnType("smallint");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Md_Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Ml_Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.ToTable("Store");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Supplier", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<short>("DeleteStatus")
-                        .HasColumnType("smallint");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Md_Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Ml_Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.ToTable("Supplier");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Tag", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<short>("DeleteStatus")
-                        .HasColumnType("smallint");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Ml_Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.ToTable("Tag");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Variation", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<short>("DeleteStatus")
-                        .HasColumnType("smallint");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Ml_Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.ToTable("Variation");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.VariationItem", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Ml_Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("VariationId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("VariationId");
-
-                    b.ToTable("VariationItem");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Warehouse", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("CreatedById")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<short>("DeleteStatus")
-                        .HasColumnType("smallint");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Ml_Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.ToTable("Warehouse");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.WarehouseArea", b =>
-                {
-                    b.Property<Guid>("WarehouseId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("AreaId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("DeliveryCost")
-                        .HasColumnType("decimal(18,3)");
-
-                    b.Property<int>("DeliveryMaxDay")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
-                    b.HasKey("WarehouseId", "AreaId");
-
-                    b.HasIndex("AreaId");
-
-                    b.ToTable("WarehouseArea");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Area", b =>
-                {
-                    b.HasOne("eCommerce_backend.Models.Country", "Country")
+                    b.HasOne("eCommerce_backend.Data.Models.Country", "Country")
                         .WithMany("Areas")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Country");
-
-                    b.Navigation("CreatedBy");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Attribute", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.AttributeItem", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CreatedBy");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.AttributeItem", b =>
-                {
-                    b.HasOne("eCommerce_backend.Models.Attribute", "Attribute")
+                    b.HasOne("eCommerce_backend.Data.Models.Attribute", "Attribute")
                         .WithMany("Items")
                         .HasForeignKey("AttributeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1013,84 +1021,70 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("Attribute");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Badge", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Category", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CreatedBy");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Brand", b =>
-                {
-                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CreatedBy");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Category", b =>
-                {
-                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("eCommerce_backend.Models.Category", "Parent")
+                    b.HasOne("eCommerce_backend.Data.Models.Category", "Parent")
                         .WithMany()
                         .HasForeignKey("ParentId");
-
-                    b.Navigation("CreatedBy");
 
                     b.Navigation("Parent");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Country", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Inventory", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
+                    b.HasOne("eCommerce_backend.Data.Models.Order", "Order")
                         .WithMany()
-                        .HasForeignKey("CreatedById")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CreatedBy");
+                    b.HasOne("eCommerce_backend.Data.Models.Purchase", "Purchase")
+                        .WithMany()
+                        .HasForeignKey("PurchaseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eCommerce_backend.Data.Models.Sku", "Sku")
+                        .WithMany()
+                        .HasForeignKey("SkuId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("eCommerce_backend.Data.Models.Warehouse", "Warehouse")
+                        .WithMany()
+                        .HasForeignKey("WarehouseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+
+                    b.Navigation("Purchase");
+
+                    b.Navigation("Sku");
+
+                    b.Navigation("Warehouse");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Order", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Order", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CreatedBy");
-
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.OrderItem", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.OrderItem", b =>
                 {
-                    b.HasOne("eCommerce_backend.Models.Order", "Order")
+                    b.HasOne("eCommerce_backend.Data.Models.Order", "Order")
                         .WithMany("Items")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.Models.Sku", "Sku")
+                    b.HasOne("eCommerce_backend.Data.Models.Sku", "Sku")
                         .WithMany()
                         .HasForeignKey("SkuId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1101,34 +1095,26 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("Sku");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Product", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Product", b =>
                 {
-                    b.HasOne("eCommerce_backend.Models.Brand", "Brand")
+                    b.HasOne("eCommerce_backend.Data.Models.Brand", "Brand")
                         .WithMany()
                         .HasForeignKey("BrandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Brand");
-
-                    b.Navigation("CreatedBy");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.ProductAttributeItem", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.ProductAttributeItem", b =>
                 {
-                    b.HasOne("eCommerce_backend.Models.Product", "Product")
+                    b.HasOne("eCommerce_backend.Data.Models.Product", "Product")
                         .WithMany("ProductAttributeItems")
                         .HasForeignKey("AttributeItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.Models.AttributeItem", "AttributeItem")
+                    b.HasOne("eCommerce_backend.Data.Models.AttributeItem", "AttributeItem")
                         .WithMany("ProductAttributeItems")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1139,15 +1125,15 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.ProductBadge", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.ProductBadge", b =>
                 {
-                    b.HasOne("eCommerce_backend.Models.Product", "Product")
+                    b.HasOne("eCommerce_backend.Data.Models.Product", "Product")
                         .WithMany("ProductBadges")
                         .HasForeignKey("BadgeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.Models.Badge", "Badge")
+                    b.HasOne("eCommerce_backend.Data.Models.Badge", "Badge")
                         .WithMany("ProductBadges")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1158,15 +1144,15 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.ProductCategory", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.ProductCategory", b =>
                 {
-                    b.HasOne("eCommerce_backend.Models.Product", "Product")
+                    b.HasOne("eCommerce_backend.Data.Models.Product", "Product")
                         .WithMany("ProductCategories")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.Models.Category", "Category")
+                    b.HasOne("eCommerce_backend.Data.Models.Category", "Category")
                         .WithMany("ProductCategories")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1177,15 +1163,15 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.ProductCountry", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.ProductCountry", b =>
                 {
-                    b.HasOne("eCommerce_backend.Models.Product", "Product")
+                    b.HasOne("eCommerce_backend.Data.Models.Product", "Product")
                         .WithMany("ProductCountries")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.Models.Country", "Country")
+                    b.HasOne("eCommerce_backend.Data.Models.Country", "Country")
                         .WithMany("ProductCountries")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1196,21 +1182,21 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.ProductStore", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.ProductStore", b =>
                 {
-                    b.HasOne("eCommerce_backend.Models.Country", "Country")
+                    b.HasOne("eCommerce_backend.Data.Models.Country", "Country")
                         .WithMany("ProductStores")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.Models.Store", "Store")
+                    b.HasOne("eCommerce_backend.Data.Models.Store", "Store")
                         .WithMany("ProductStores")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.Models.Product", "Product")
+                    b.HasOne("eCommerce_backend.Data.Models.Product", "Product")
                         .WithMany("ProductStores")
                         .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1223,21 +1209,21 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("Store");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.ProductSupplier", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.ProductSupplier", b =>
                 {
-                    b.HasOne("eCommerce_backend.Models.Country", "Country")
+                    b.HasOne("eCommerce_backend.Data.Models.Country", "Country")
                         .WithMany("ProductSuppliers")
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.Models.Supplier", "Supplier")
+                    b.HasOne("eCommerce_backend.Data.Models.Supplier", "Supplier")
                         .WithMany("ProductSuppliers")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.Models.Product", "Product")
+                    b.HasOne("eCommerce_backend.Data.Models.Product", "Product")
                         .WithMany("ProductSuppliers")
                         .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1250,15 +1236,15 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("Supplier");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.ProductTag", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.ProductTag", b =>
                 {
-                    b.HasOne("eCommerce_backend.Models.Tag", "Tag")
+                    b.HasOne("eCommerce_backend.Data.Models.Tag", "Tag")
                         .WithMany("ProductTags")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.Models.Product", "Product")
+                    b.HasOne("eCommerce_backend.Data.Models.Product", "Product")
                         .WithMany("ProductTags")
                         .HasForeignKey("TagId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1269,50 +1255,26 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("Tag");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Purchase", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Purchase", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "ApprovedBy")
-                        .WithMany()
-                        .HasForeignKey("ApprovedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("eCommerce_backend.Models.Supplier", "Supplier")
+                    b.HasOne("eCommerce_backend.Data.Models.Supplier", "Supplier")
                         .WithMany()
                         .HasForeignKey("SupplierId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.Models.Warehouse", "Warehouse")
-                        .WithMany()
-                        .HasForeignKey("WarehouseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("ApprovedBy");
-
-                    b.Navigation("CreatedBy");
-
                     b.Navigation("Supplier");
-
-                    b.Navigation("Warehouse");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.PurchaseItem", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.PurchaseItem", b =>
                 {
-                    b.HasOne("eCommerce_backend.Models.Purchase", "Purchase")
+                    b.HasOne("eCommerce_backend.Data.Models.Purchase", "Purchase")
                         .WithMany("Items")
                         .HasForeignKey("PurchaseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.Models.Sku", "Sku")
+                    b.HasOne("eCommerce_backend.Data.Models.Sku", "Sku")
                         .WithMany()
                         .HasForeignKey("SkuId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1323,9 +1285,9 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("Sku");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.PurchaseReceive", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.PurchaseReceive", b =>
                 {
-                    b.HasOne("eCommerce_backend.Models.Purchase", "Purchase")
+                    b.HasOne("eCommerce_backend.Data.Models.Purchase", "Purchase")
                         .WithMany("PurchaseReceives")
                         .HasForeignKey("PurchaseId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1335,20 +1297,28 @@ namespace eCommercebackend.Migrations.ECommerce
                         .WithMany()
                         .HasForeignKey("ReceiveById");
 
+                    b.HasOne("eCommerce_backend.Data.Models.Warehouse", "Warehouse")
+                        .WithMany()
+                        .HasForeignKey("WarehouseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Purchase");
 
                     b.Navigation("ReceiveBy");
+
+                    b.Navigation("Warehouse");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.PurchaseReceiveItem", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.PurchaseReceiveItem", b =>
                 {
-                    b.HasOne("eCommerce_backend.Models.PurchaseReceive", "PurchaseReceive")
+                    b.HasOne("eCommerce_backend.Data.Models.PurchaseReceive", "PurchaseReceive")
                         .WithMany("Items")
                         .HasForeignKey("PurchaseReceiveId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.Models.Sku", "Sku")
+                    b.HasOne("eCommerce_backend.Data.Models.Sku", "Sku")
                         .WithMany()
                         .HasForeignKey("SkuId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1359,24 +1329,24 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("Sku");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Sku", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Sku", b =>
                 {
-                    b.HasOne("eCommerce_backend.Models.Product", null)
+                    b.HasOne("eCommerce_backend.Data.Models.Product", null)
                         .WithMany("Skus")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.SkuVariationItem", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.SkuVariationItem", b =>
                 {
-                    b.HasOne("eCommerce_backend.Models.VariationItem", "VariationItem")
+                    b.HasOne("eCommerce_backend.Data.Models.VariationItem", "VariationItem")
                         .WithMany("SkuVariationItems")
                         .HasForeignKey("SkuId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.Models.Sku", "Sku")
+                    b.HasOne("eCommerce_backend.Data.Models.Sku", "Sku")
                         .WithMany("SkuVariationItems")
                         .HasForeignKey("VariationItemId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1387,72 +1357,20 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("VariationItem");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.StatusHistory", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.StatusHistory", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("eCommerce_backend.IdentityAuth.ApplicationUser", "Setter")
                         .WithMany()
                         .HasForeignKey("SetterId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("CreatedBy");
-
                     b.Navigation("Setter");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Store", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.VariationItem", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CreatedBy");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Supplier", b =>
-                {
-                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CreatedBy");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Tag", b =>
-                {
-                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CreatedBy");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.Variation", b =>
-                {
-                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CreatedBy");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.VariationItem", b =>
-                {
-                    b.HasOne("eCommerce_backend.Models.Variation", "Variation")
+                    b.HasOne("eCommerce_backend.Data.Models.Variation", "Variation")
                         .WithMany("Items")
                         .HasForeignKey("VariationId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1461,26 +1379,15 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("Variation");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Warehouse", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.WarehouseArea", b =>
                 {
-                    b.HasOne("eCommerce_backend.IdentityAuth.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("CreatedBy");
-                });
-
-            modelBuilder.Entity("eCommerce_backend.Models.WarehouseArea", b =>
-                {
-                    b.HasOne("eCommerce_backend.Models.Warehouse", "Warehouse")
+                    b.HasOne("eCommerce_backend.Data.Models.Warehouse", "Warehouse")
                         .WithMany("WarehouseAreas")
                         .HasForeignKey("AreaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("eCommerce_backend.Models.Area", "Area")
+                    b.HasOne("eCommerce_backend.Data.Models.Area", "Area")
                         .WithMany("WarehouseAreas")
                         .HasForeignKey("WarehouseId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -1491,32 +1398,32 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("Warehouse");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Area", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Area", b =>
                 {
                     b.Navigation("WarehouseAreas");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Attribute", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Attribute", b =>
                 {
                     b.Navigation("Items");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.AttributeItem", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.AttributeItem", b =>
                 {
                     b.Navigation("ProductAttributeItems");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Badge", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Badge", b =>
                 {
                     b.Navigation("ProductBadges");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Category", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Category", b =>
                 {
                     b.Navigation("ProductCategories");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Country", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Country", b =>
                 {
                     b.Navigation("Areas");
 
@@ -1527,12 +1434,12 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("ProductSuppliers");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Order", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Order", b =>
                 {
                     b.Navigation("Items");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Product", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Product", b =>
                 {
                     b.Navigation("ProductAttributeItems");
 
@@ -1551,49 +1458,49 @@ namespace eCommercebackend.Migrations.ECommerce
                     b.Navigation("Skus");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Purchase", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Purchase", b =>
                 {
                     b.Navigation("Items");
 
                     b.Navigation("PurchaseReceives");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.PurchaseReceive", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.PurchaseReceive", b =>
                 {
                     b.Navigation("Items");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Sku", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Sku", b =>
                 {
                     b.Navigation("SkuVariationItems");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Store", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Store", b =>
                 {
                     b.Navigation("ProductStores");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Supplier", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Supplier", b =>
                 {
                     b.Navigation("ProductSuppliers");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Tag", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Tag", b =>
                 {
                     b.Navigation("ProductTags");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Variation", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Variation", b =>
                 {
                     b.Navigation("Items");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.VariationItem", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.VariationItem", b =>
                 {
                     b.Navigation("SkuVariationItems");
                 });
 
-            modelBuilder.Entity("eCommerce_backend.Models.Warehouse", b =>
+            modelBuilder.Entity("eCommerce_backend.Data.Models.Warehouse", b =>
                 {
                     b.Navigation("WarehouseAreas");
                 });

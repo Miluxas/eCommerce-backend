@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using eCommerce_backend.IdentityAuth;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
-using eCommerce_backend.IdentityAuth;
-using Microsoft.EntityFrameworkCore;
 
 
 namespace eCommerce_backend.Base
 {
-     
+
     public class BaseModel
     {
         [Key]
@@ -23,7 +19,7 @@ namespace eCommerce_backend.Base
 
         [Required]
         [DataType(DataType.DateTime)]
-        public DateTime CreatedAt { get; set; } = System.DateTime.Now;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
 
         public Guid CreatedById { get; set; }
