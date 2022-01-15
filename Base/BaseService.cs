@@ -12,19 +12,21 @@ namespace eCommerce_backend.Base
     {
         protected DbSet<T> _ts;
         protected Data.ECommerceContext _context;
+        protected Func<JObject, IQueryable<T>> _predicate;
 
         public BaseService(DbSet<T> ts, Data.ECommerceContext context)
         {
             _ts = ts;
             _context = context;
+            _predicate = (filter) =>
+            {
+                return this._ts.Where<T>(e=>true);
+            };
         }
 
         virtual public async Task<IEnumerable<T>> List(ListBody listBody)
         {
-            if(listBody.Filter != null)
-                return await _ts.FromSqlRaw("select * from Product where "+listBody.Filter).Take(listBody.Limit).OrderByDescending(e => e.CreatedAt).ToListAsync();
-
-            return await _ts.Take(listBody.Limit).OrderByDescending(e=>e.CreatedAt).ToListAsync();
+            return await _predicate(listBody.Filter).Take(listBody.Limit).OrderByDescending(e=>e.CreatedAt).ToListAsync();
         }
         virtual public async Task<T> Detail(Guid id)
         {
