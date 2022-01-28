@@ -11,7 +11,16 @@ namespace eCommerce_backend.Services
     public class PurchaseService : Base.BaseService<Purchase>
     {
         public PurchaseService(DbSet<Purchase> ts,ECommerceContext context):base(ts,context) {
-
+            _predicate = (query, filter) =>
+            {
+                var arr = filter.Properties();
+                foreach (var prop in arr)
+                {
+                    if (prop.Name == "Id")
+                        query = query.Where(e => e.Id == System.Guid.Parse(prop.Value.ToString()));
+                }
+                return query;
+            };
         }
         public async Task<Purchase> RegisterNewPurchase(NewPurchaseModel newPurchase, Guid userId)
         {

@@ -9,24 +9,23 @@ namespace eCommerce_backend.Services
     {
         public ProductService(DbSet<Product> ts, ECommerceContext context) : base(ts, context)
         {
-            _predicate = (filter) =>
+            _predicate = (query,filter) =>
             {
-                IQueryable<Product> tmpQuery = ts;
                 var arr = filter.Properties();
                 foreach (var prop in arr)
                 {
                     if(prop.Name =="Id")
-                        tmpQuery=tmpQuery.Where(e=>e.Id==System.Guid.Parse( prop.Value.ToString()));
+                        query=query.Where(e=>e.Id==System.Guid.Parse( prop.Value.ToString()));
                     else if (prop.Name == "Name")
-                        tmpQuery = tmpQuery.Where(e => e.Ml_Name.Contains( prop.Value.ToString()));
+                        query = query.Where(e => e.Ml_Name.Contains( prop.Value.ToString()));
                     else if (prop.Name == "Description")
-                        tmpQuery = tmpQuery.Where(e => e.Ml_Description.Contains(prop.Value.ToString()));
+                        query = query.Where(e => e.Ml_Description.Contains(prop.Value.ToString()));
                     else if (prop.Name == "Code")
-                        tmpQuery = tmpQuery.Where(e => e.Code.Contains(prop.Value.ToString()));
+                        query = query.Where(e => e.Code.Contains(prop.Value.ToString()));
                     else if (prop.Name == "Brand.Name")
-                        tmpQuery = tmpQuery.Where(e => e.Brand!=null && e.Brand.Ml_Name.Contains(prop.Value.ToString()));
+                        query = query.Where(e => e.Brand!=null && e.Brand.Ml_Name.Contains(prop.Value.ToString()));
                 }
-                return tmpQuery;
+                return query;
             };
         }
         //override public async Task<Product> Create(Product entity, Guid userId)

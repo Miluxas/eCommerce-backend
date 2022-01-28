@@ -12,21 +12,38 @@ namespace eCommerce_backend.Base
     {
         protected DbSet<T> _ts;
         protected Data.ECommerceContext _context;
-        protected Func<JObject, IQueryable<T>> _predicate;
+        protected Func<IQueryable<T>, JObject, IQueryable<T>> _predicate;
+        protected Func<IQueryable<T>, JObject, IQueryable<T>> _order;
+        protected Func<IQueryable<T>, Pagination, IQueryable<T>> _paginate;
 
         public BaseService(DbSet<T> ts, Data.ECommerceContext context)
         {
             _ts = ts;
             _context = context;
-            _predicate = (filter) =>
+            _predicate = (query,filter) =>
             {
-                return this._ts.Where<T>(e=>true);
+                return query.Where<T>(e=>true);
+            };
+            _order = (query, order) =>
+            {
+                return query.OrderByDescending(e => e.CreatedAt);
+            };
+            _paginate = (query, paginate) =>
+            {
+                return query.Skip(paginate.Limit*paginate.Page).Take(paginate.Limit);
             };
         }
 
         virtual public async Task<IEnumerable<T>> List(ListBody listBody)
         {
-            return await _predicate(listBody.Filter).Take(listBody.Limit).OrderByDescending(e=>e.CreatedAt).ToListAsync();
+            IQueryable<T> query = _ts;
+            if(listBody.Filter!=null)
+                query=_predicate(query,listBody.Filter);
+            if (listBody.Sort != null)
+                query = _predicate(query, listBody.Sort);
+                query = _paginate(query, listBody.Pagination);
+
+            return await query.ToListAsync();
         }
         virtual public async Task<T> Detail(Guid id)
         {
