@@ -7,7 +7,7 @@ namespace eCommerce_backend.Services
 {
     public class BrandService:Base.BaseService<Brand>
     {
-        public BrandService(DbSet<Brand> ts,ECommerceContext context):base(ts,context) {
+        public BrandService(DbSet<Brand> ts,ECommerceContext context,IContentRoleAccess<Brand> contentRoleAccess):base(ts,context,contentRoleAccess) {
             _predicate = (query, filter) =>
             {
                 var arr = filter.Properties();

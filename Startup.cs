@@ -62,6 +62,7 @@ namespace eCommerce_backend
             .AddDefaultTokenProviders();
             services.AddCors();
             services.AddControllers().AddNewtonsoftJson();
+            services.AddScoped<IContentRoleAccess<Base.BaseModel>, ContentRoleAccess<Base.BaseModel>>();
             /*AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;

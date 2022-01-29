@@ -9,7 +9,7 @@ namespace eCommerce_backend.Services
 {
     public class AreaService:Base.BaseService<Area>
     {
-        public AreaService(DbSet<Area> ts,ECommerceContext context):base(ts,context) {
+        public AreaService(DbSet<Area> ts,ECommerceContext context,IContentRoleAccess<Area> contentRoleAccess):base(ts,context,contentRoleAccess) {
             _predicate = (query,filter) =>
             {
                 var arr = filter.Properties();

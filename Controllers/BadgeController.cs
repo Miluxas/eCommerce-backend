@@ -11,9 +11,9 @@ namespace eCommerce_backend.Controllers
     [ApiController]
     public class BadgeController : Base.BaseController<Badge>
     {
-        public BadgeController(ECommerceContext context, Guid? userId = null) : base(userId)
+        public BadgeController(ECommerceContext context, IContentRoleAccess<Badge> contentRoleAccess, Guid? userId = null) : base(userId)
         {
-            service = new Services.BadgeService(context.Badges, context);
+            service = new Services.BadgeService(context.Badges, context,contentRoleAccess);
         }
     }
 }

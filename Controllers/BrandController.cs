@@ -11,9 +11,9 @@ namespace eCommerce_backend.Controllers
     [ApiController]
     public class BrandController : Base.BaseController<Brand>
     {
-        public BrandController(ECommerceContext context, Guid? userId = null) : base(userId)
+        public BrandController(ECommerceContext context, IContentRoleAccess<Brand> contentRoleAccess, Guid? userId = null) : base(userId)
         {
-            service = new Services.BrandService(context.Brands, context);
+            service = new Services.BrandService(context.Brands, context, contentRoleAccess);
         }
     }
 }

@@ -11,9 +11,9 @@ namespace eCommerce_backend.Controllers
     [ApiController]
     public class WarehouseController : Base.BaseController<Warehouse>
     {
-        public WarehouseController(ECommerceContext context, Guid? userId = null) : base(userId)
+        public WarehouseController(ECommerceContext context, IContentRoleAccess<Warehouse> contentRoleAccess, Guid? userId = null) : base(userId)
         {
-            service = new Services.WarehouseService(context.Warehouses, context);
+            service = new Services.WarehouseService(context.Warehouses, context,contentRoleAccess);
         }
     }
 }

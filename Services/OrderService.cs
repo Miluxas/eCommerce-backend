@@ -7,7 +7,7 @@ namespace eCommerce_backend.Services
 {
     public class OrderService : Base.BaseService<Order>
     {
-        public OrderService(DbSet<Order> ts,ECommerceContext context):base(ts,context) {
+        public OrderService(DbSet<Order> ts,ECommerceContext context,IContentRoleAccess<Order> contentRoleAccess):base(ts,context,contentRoleAccess) {
             _predicate = (query, filter) =>
             {
                 var arr = filter.Properties();

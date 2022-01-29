@@ -15,9 +15,9 @@ namespace eCommerce_backend.Controllers
     public class PurchaseController : Base.BaseController<Purchase>
     {
         readonly Services.PurchaseService _service;
-        public PurchaseController(ECommerceContext context, Guid? userId = null) : base(userId)
+        public PurchaseController(ECommerceContext context, IContentRoleAccess<Purchase> contentRoleAccess, Guid? userId = null) : base(userId)
         {
-            service=_service = new Services.PurchaseService(context.Purchases, context);
+            service=_service = new Services.PurchaseService(context.Purchases, context,contentRoleAccess);
         }
 
         [HttpPost]

@@ -6,7 +6,7 @@ namespace eCommerce_backend.Base
     {
         public Pagination Pagination { get; set; }=new Pagination();
         public JObject Filter { get; set; } = null;
-        public JObject Sort { get; set; } = null;
+        public JObject Order { get; set; } = null;
     }
     public class Pagination
     {

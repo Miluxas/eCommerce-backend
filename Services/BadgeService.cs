@@ -8,7 +8,7 @@ namespace eCommerce_backend.Services
 {
     public class BadgeService:Base.BaseService<Badge>
     {
-        public BadgeService(DbSet<Badge> ts,ECommerceContext context):base(ts,context) {
+        public BadgeService(DbSet<Badge> ts,ECommerceContext context,IContentRoleAccess<Badge> contentRoleAccess):base(ts,context,contentRoleAccess) {
             _predicate = (query, filter) =>
             {
                 var arr = filter.Properties();

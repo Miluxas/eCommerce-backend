@@ -9,7 +9,7 @@ namespace eCommerce_backend.Services
 {
     public class AttributeService:Base.BaseService<Data.Models.Attribute>
     {
-        public AttributeService(DbSet<Data.Models.Attribute> ts,ECommerceContext context):base(ts,context) {
+        public AttributeService(DbSet<Data.Models.Attribute> ts,ECommerceContext context,IContentRoleAccess<Data.Models.Attribute> contentRoleAccess):base(ts,context,contentRoleAccess) {
             _predicate = (query, filter) =>
             {
                 var arr = filter.Properties();

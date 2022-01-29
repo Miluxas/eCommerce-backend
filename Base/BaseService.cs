@@ -15,8 +15,9 @@ namespace eCommerce_backend.Base
         protected Func<IQueryable<T>, JObject, IQueryable<T>> _predicate;
         protected Func<IQueryable<T>, JObject, IQueryable<T>> _order;
         protected Func<IQueryable<T>, Pagination, IQueryable<T>> _paginate;
+        protected Func<IQueryable<T>, IQueryable<T>> _contentRoleAccess;
 
-        public BaseService(DbSet<T> ts, Data.ECommerceContext context)
+        public BaseService(DbSet<T> ts, Data.ECommerceContext context,IContentRoleAccess<T> contentRoleAccess)
         {
             _ts = ts;
             _context = context;
@@ -32,6 +33,7 @@ namespace eCommerce_backend.Base
             {
                 return query.Skip(paginate.Limit*paginate.Page).Take(paginate.Limit);
             };
+            _contentRoleAccess = contentRoleAccess.SetAccessControl();
         }
 
         virtual public async Task<IEnumerable<T>> List(ListBody listBody)
@@ -39,8 +41,8 @@ namespace eCommerce_backend.Base
             IQueryable<T> query = _ts;
             if(listBody.Filter!=null)
                 query=_predicate(query,listBody.Filter);
-            if (listBody.Sort != null)
-                query = _predicate(query, listBody.Sort);
+            if (listBody.Order != null)
+                query = _order(query, listBody.Order);
                 query = _paginate(query, listBody.Pagination);
 
             return await query.ToListAsync();

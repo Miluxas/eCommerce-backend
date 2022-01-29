@@ -7,7 +7,7 @@ namespace eCommerce_backend.Services
 {
     public class ProductService : Base.BaseService<Product>
     {
-        public ProductService(DbSet<Product> ts, ECommerceContext context) : base(ts, context)
+        public ProductService(DbSet<Product> ts, ECommerceContext context,IContentRoleAccess<Product> contentRoleAccess) : base(ts, context,contentRoleAccess)
         {
             _predicate = (query,filter) =>
             {

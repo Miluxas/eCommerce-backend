@@ -9,7 +9,7 @@ namespace eCommerce_backend.Services
 {
     public class VariationService : Base.BaseService<Variation>
     {
-        public VariationService(DbSet<Variation> ts, ECommerceContext context) : base(ts, context)
+        public VariationService(DbSet<Variation> ts, ECommerceContext context, IContentRoleAccess<Variation> contentRoleAccess) : base(ts, context, contentRoleAccess)
         {
             _predicate = (query, filter) =>
             {

@@ -19,9 +19,9 @@ namespace eCommerce_backend.Controllers
     [ApiController]
     public class ProductController : Base.BaseController<Product>
     {
-        public ProductController(ECommerceContext context,Guid? userId=null) : base(userId)
+        public ProductController(ECommerceContext context, IContentRoleAccess<Product> contentRoleAccess, Guid? userId=null) : base(userId)
         {
-            service = new Services.ProductService(context.Products,context);
+            service = new Services.ProductService(context.Products,context,contentRoleAccess);
         }
 
         //[HttpPost]

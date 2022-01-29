@@ -7,7 +7,7 @@ namespace eCommerce_backend.Services
 {
     public class WarehouseService:Base.BaseService<Warehouse>
     {
-        public WarehouseService(DbSet<Warehouse> ts,ECommerceContext context):base(ts,context) {
+        public WarehouseService(DbSet<Warehouse> ts,ECommerceContext context,IContentRoleAccess<Warehouse> contentRoleAccess):base(ts,context,contentRoleAccess) {
             _predicate = (query, filter) =>
             {
                 var arr = filter.Properties();

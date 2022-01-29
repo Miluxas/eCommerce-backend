@@ -16,9 +16,9 @@ namespace eCommerce_backend.Controllers
     [ApiController]
     public class CategoryController : Base.BaseController<Category>
     {
-        public CategoryController(ECommerceContext context,Guid? userId=null) : base(userId)
+        public CategoryController(ECommerceContext context, IContentRoleAccess<Category> contentRoleAccess, Guid? userId=null) : base(userId)
         {
-            service = new Services.CategoryService(context.Categories,context);
+            service = new Services.CategoryService(context.Categories,context,contentRoleAccess);
         }
     }
 }

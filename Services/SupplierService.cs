@@ -7,7 +7,7 @@ namespace eCommerce_backend.Services
 {
     public class SupplierService:Base.BaseService<Supplier>
     {
-        public SupplierService(DbSet<Supplier> ts,ECommerceContext context):base(ts,context) {
+        public SupplierService(DbSet<Supplier> ts,ECommerceContext context,IContentRoleAccess<Supplier> contentRoleAccess):base(ts,context,contentRoleAccess) {
             _predicate = (query, filter) =>
             {
                 var arr = filter.Properties();

@@ -10,7 +10,7 @@ namespace eCommerce_backend.Services
 {
     public class PurchaseService : Base.BaseService<Purchase>
     {
-        public PurchaseService(DbSet<Purchase> ts,ECommerceContext context):base(ts,context) {
+        public PurchaseService(DbSet<Purchase> ts,ECommerceContext context,IContentRoleAccess<Purchase> contentRoleAccess):base(ts,context,contentRoleAccess) {
             _predicate = (query, filter) =>
             {
                 var arr = filter.Properties();

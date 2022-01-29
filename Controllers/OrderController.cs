@@ -11,9 +11,9 @@ namespace eCommerce_backend.Controllers
     [ApiController]
     public class OrderController : Base.BaseController<Order>
     {
-        public OrderController(ECommerceContext context, Guid? userId = null) : base(userId)
+        public OrderController(ECommerceContext context, IContentRoleAccess<Order> contentRoleAccess, Guid? userId = null) : base(userId)
         {
-            service = new Services.OrderService(context.Orders, context);
+            service = new Services.OrderService(context.Orders, context, contentRoleAccess);
         }
     }
 }

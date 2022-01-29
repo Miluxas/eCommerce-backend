@@ -7,7 +7,7 @@ namespace eCommerce_backend.Services
 {
     public class TagService:Base.BaseService<Tag>
     {
-        public TagService(DbSet<Tag> ts,ECommerceContext context):base(ts,context) {
+        public TagService(DbSet<Tag> ts,ECommerceContext context,IContentRoleAccess<Tag> contentRoleAccess):base(ts,context,contentRoleAccess) {
             _predicate = (query, filter) =>
             {
                 var arr = filter.Properties();
